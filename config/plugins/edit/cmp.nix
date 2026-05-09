@@ -4,7 +4,7 @@
     settings = {
       sources = [
         { name = "nvim_lsp"; }
-        { name = "emoji"; }
+        # { name = "emoji"; }
         { name = "path"; }
         { name = "buffer"; }
 
