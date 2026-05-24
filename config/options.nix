@@ -1,8 +1,5 @@
 { pkgs, ... }:
 {
-  viAlias = true;
-  vimAlias = true;
-
   withNodeJs = true;
   withPerl = true;
   withPython3 = true;

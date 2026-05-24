@@ -33,7 +33,10 @@
       pre-commit-hooks,
       ...
     }:
-    flake-utils.lib.eachDefaultSystem (
+    {
+      nixvimModules.default = import ./config;
+    }
+    // flake-utils.lib.eachDefaultSystem (
       system:
       let
         pkgs = import nixpkgs { inherit system; };
