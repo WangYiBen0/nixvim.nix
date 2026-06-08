@@ -406,15 +406,43 @@
     # Scratchpad (Snacks)
     {
       mode = "n";
-      key = "<leader>ns";
+      key = "<leader>.";
       action = "<cmd>lua Snacks.scratch()<CR>";
       options.desc = "Toggle Scratchpad";
     }
     {
       mode = "n";
-      key = "<leader>nS";
+      key = "<leader>S";
       action = "<cmd>lua Snacks.scratch.select()<CR>";
       options.desc = "Select Scratchpad";
+    }
+    {
+      mode = "n";
+      key = "<leader>dps";
+      action = "<cmd>lua Snacks.profiler.scratch()<CR>";
+      options.desc = "Profiler Scratch Buffer";
+    }
+
+    # Persistence
+    {
+      key = "<leader>qs";
+      action = ''<cmd>lua require("persistence").load()<CR>'';
+      options.desc = "Restore Session";
+    }
+    {
+      key = "<leader>qS";
+      action = ''<cmd>lua require("persistence").select()<CR>'';
+      options.desc = "Select Session";
+    }
+    {
+      key = "<leader>ql";
+      action = ''<cmd>lua require("persistence").load({ last = true })<CR>'';
+      options.desc = "Restore Last Session";
+    }
+    {
+      key = "<leader>qd";
+      action = ''<cmd>lua require("persistence").stop()<CR>'';
+      options.desc = "Don't Save Current Session";
     }
   ];
 }

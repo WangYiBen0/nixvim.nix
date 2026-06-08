@@ -3,7 +3,7 @@ _: {
     ./edit
     ./lang
     ./ui
-    ./others
+    ./utils
 
     ./lz-n.nix
   ];
