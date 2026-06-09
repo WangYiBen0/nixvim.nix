@@ -1,57 +1,66 @@
 {
   plugins.which-key = {
     enable = true;
+    lazyLoad.settings.event = [ "DeferredUIEnter" ];
     settings = {
-      win.border = "rounded";
-      delay = 200;
-      layout = {
-        align = "right";
-        # spacing = 3;
-      };
-      preset = "modern";
-      icons = {
-        breadcrumb = "»";
-        separator = "➜";
-        group = "+";
-      };
-      spec = [
+      preset = "helix";
+      spec.__raw = ''
         {
-          __unkeyed-1 = "<leader>b";
-          group = "buffer";
+          mode = { "n", "x" },
+          { "<leader><tab>", group = "tabs" },
+          { "<leader>c", group = "code" },
+          { "<leader>d", group = "debug" },
+          { "<leader>dp", group = "profiler" },
+          { "<leader>f", group = "file/find" },
+          { "<leader>g", group = "git" },
+          { "<leader>gh", group = "hunks" },
+          { "<leader>q", group = "quit/session" },
+          { "<leader>s", group = "search" },
+          { "<leader>u", group = "ui" },
+          { "<leader>x", group = "diagnostics/quickfix" },
+          { "[", group = "prev" },
+          { "]", group = "next" },
+          { "g", group = "goto" },
+          { "gs", group = "surround" },
+          { "z", group = "fold" },
+          {
+            "<leader>b",
+            group = "buffer",
+            expand = function()
+              return require("which-key.extras").expand.buf()
+            end,
+          },
+          {
+            "<leader>w",
+            group = "windows",
+            proxy = "<c-w>",
+            expand = function()
+              return require("which-key.extras").expand.win()
+            end,
+          },
+          -- better descriptions
+          { "gx", desc = "Open with system app" },
         }
-        {
-          __unkeyed-1 = "<leader>c";
-          group = "code";
-        }
-        {
-          __unkeyed-1 = "<leader>f";
-          group = "file/find";
-        }
-        {
-          __unkeyed-1 = "<leader>g";
-          group = "git";
-        }
-        {
-          __unkeyed-1 = "<leader>q";
-          group = "quit/session";
-        }
-        {
-          __unkeyed-1 = "<leader>s";
-          group = "search";
-        }
-        {
-          __unkeyed-1 = "<leader>u";
-          group = "ui";
-        }
-        {
-          __unkeyed-1 = "<leader>w";
-          group = "window";
-        }
-        {
-          __unkeyed-1 = "<leader>x";
-          group = "diagnostics/quickfix";
-        }
-      ];
+      '';
     };
   };
+
+  keymaps = [
+    {
+      mode = "n";
+      key = "<leader>?";
+      action = "<cmd>lua require('which-key').show({ global = false })<cr>";
+      options = {
+        desc = "Buffer Keymaps (which-key)";
+      };
+    }
+    {
+      mode = "n";
+      key = "<c-w><space>";
+      action = "<cmd>lua require('which-key').show({ keys = '<c-w>', loop = true })<cr>";
+      options = {
+        desc = "Window Hydra Mode (which-key)";
+      };
+    }
+  ];
 }

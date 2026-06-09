@@ -94,16 +94,16 @@
 
       terminal = {
         enabled = true;
-        win = {
-          keys = {
-            # nav_h.__raw = ''"<C-h>", term_nav("h"), desc = "Go to Left Window", expr = true, mode = "t"'';
-            # nav_j.__raw = ''"<C-j>", term_nav("j"), desc = "Go to Lower Window", expr = true, mode = "t"'';
-            # nav_k.__raw = ''"<C-k>", term_nav("k"), desc = "Go to Upper Window", expr = true, mode = "t"'';
-            # nav_l.__raw = ''"<C-l>", term_nav("l"), desc = "Go to Right Window", expr = true, mode = "t"'';
-            hide_slash.__raw = ''"<C-/>", "hide", desc = "Hide Terminal", mode = "t"'';
-            hide_underscore.__raw = ''"<c-_>", "hide", desc = "which_key_ignore", mode = "t"'';
-          };
-        };
+        # win = {
+        #   keys = {
+        #     # nav_h.__raw = ''"<C-h>", term_nav("h"), desc = "Go to Left Window", expr = true, mode = "t"'';
+        #     # nav_j.__raw = ''"<C-j>", term_nav("j"), desc = "Go to Lower Window", expr = true, mode = "t"'';
+        #     # nav_k.__raw = ''"<C-k>", term_nav("k"), desc = "Go to Upper Window", expr = true, mode = "t"'';
+        #     # nav_l.__raw = ''"<C-l>", term_nav("l"), desc = "Go to Right Window", expr = true, mode = "t"'';
+        #     hide_slash.__raw = ''"<C-/>", "hide", desc = "Hide Terminal", mode = "t"'';
+        #     hide_underscore.__raw = ''"<c-_>", "hide", desc = "which_key_ignore", mode = "t"'';
+        #   };
+        # };
       };
 
       words = {
