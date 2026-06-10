@@ -6,27 +6,26 @@
   withRuby = true;
 
   dependencies = {
-    rust-analyzer = {
-      enable = true;
-    };
+    fd.enable = true;
+    nodejs.enable = true;
+    ripgrep.enable = true;
+    rust-analyzer.enable = true;
+    sqlite.enable = true;
+    tree-sitter.enable = true;
   };
 
   extraPackages = with pkgs; [
+    ast-grep
     black
-    fd
     ghostscript
     luaPackages.jsregexp
     mermaid-cli
     nixfmt
-    nodejs
     prettierd
     python3
-    ripgrep
     stylua
     shellcheck
     shfmt
-    sqlite
-    tree-sitter
   ];
 
   clipboard.providers = {
