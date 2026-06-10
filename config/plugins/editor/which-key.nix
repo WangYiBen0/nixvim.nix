@@ -49,18 +49,14 @@
     {
       mode = "n";
       key = "<leader>?";
-      action = "<cmd>lua require('which-key').show({ global = false })<cr>";
-      options = {
-        desc = "Buffer Keymaps (which-key)";
-      };
+      action.__raw = ''function() require("which-key").show({ global = false }) end'';
+      options.desc = "Buffer Keymaps (which-key)";
     }
     {
       mode = "n";
       key = "<c-w><space>";
-      action = "<cmd>lua require('which-key').show({ keys = '<c-w>', loop = true })<cr>";
-      options = {
-        desc = "Window Hydra Mode (which-key)";
-      };
+      action.__raw = ''function() require("which-key").show({ keys = "<c-w>", loop = true }) end'';
+      options.desc = "Window Hydra Mode (which-key)";
     }
   ];
 }

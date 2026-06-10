@@ -204,79 +204,29 @@
       options.desc = "Delete Buffer";
     }
 
-    # --- Search ---
-    {
-      mode = "n";
-      key = "<leader><space>";
-      action = "<cmd>lua Snacks.picker.smart()<CR>";
-      options.desc = "Smart Find Files";
-    }
-    {
-      mode = "n";
-      key = "<leader>ff";
-      action = "<cmd>lua Snacks.picker.files()<CR>";
-      options.desc = "Find Files";
-    }
-    {
-      mode = "n";
-      key = "<leader>fr";
-      action = "<cmd>lua Snacks.picker.recent()<CR>";
-      options.desc = "Recent Files";
-    }
-    {
-      mode = "n";
-      key = "<leader>fb";
-      action = "<cmd>lua Snacks.picker.buffers()<CR>";
-      options.desc = "Buffers";
-    }
-    {
-      mode = "n";
-      key = "<leader>sg";
-      action = "<cmd>lua Snacks.picker.grep()<CR>";
-      options.desc = "Grep (Global Search)";
-    }
-    {
-      mode = "n";
-      key = "<leader>sw";
-      action = "<cmd>lua Snacks.picker.grep_word()<CR>";
-      options.desc = "Search Word Under Cursor";
-    }
-    {
-      mode = "n";
-      key = "<leader>sk";
-      action = "<cmd>lua Snacks.picker.keymaps()<CR>";
-      options.desc = "Search Keymaps";
-    }
-    {
-      mode = "n";
-      key = "<leader>sq";
-      action = "<cmd>lua Snacks.picker.qflist()<CR>";
-      options.desc = "Quickfix List";
-    }
-
     # --- LSP Actions ---
     {
       mode = "n";
       key = "gd";
-      action = "<cmd>lua Snacks.picker.lsp_definitions()<cr>";
+      action.__raw = "function() Snacks.picker.lsp_definitions() end";
       options.desc = "Goto Definition";
     }
     {
       mode = "n";
       key = "gr";
-      action = "<cmd>lua Snacks.picker.lsp_references()<cr>";
+      action.__raw = "function() Snacks.picker.lsp_references() end";
       options.desc = "References";
     }
     {
       mode = "n";
       key = "gI";
-      action = "<cmd>lua Snacks.picker.lsp_implementations()<cr>";
+      action.__raw = "function() Snacks.picker.lsp_implementations() end";
       options.desc = "Goto Implementation";
     }
     {
       mode = "n";
       key = "gy";
-      action = "<cmd>lua Snacks.picker.lsp_type_definitions()<cr>";
+      action.__raw = "function() Snacks.picker.lsp_type_definitions() end";
       options.desc = "Goto Type Definition";
     }
     {
@@ -288,7 +238,7 @@
     {
       mode = "n";
       key = "<leader>ss";
-      action = "<cmd>lua Snacks.picker.lsp_symbols()<cr>";
+      action.__raw = "function() Snacks.picker.lsp_symbols() end";
       options.desc = "LSP Symbols";
     }
     {
@@ -327,47 +277,27 @@
     {
       mode = "n";
       key = "<leader>e";
-      action = "<cmd>lua Snacks.explorer()<cr>";
+      action.__raw = "function() Snacks.explorer() end";
       options.desc = "Explorer Snacks (Root Dir)";
     }
     {
       mode = "n";
       key = "<leader>fe";
-      action = "<cmd>lua Snacks.explorer()<cr>";
+      action.__raw = "function() Snacks.explorer() end";
       options.desc = "Explorer Snacks (Root Dir)";
     }
     {
       mode = "n";
       key = "<leader>E";
-      action = "<cmd>lua Snacks.explorer({cwd = vim.fn.getcwd()})<cr>";
+      action.__raw = "function() Snacks.explorer({cwd = vim.fn.getcwd()}) end";
       options.desc = "Explorer Snacks (cwd)";
-    }
-
-    # Floating terminal (Snacks)
-    {
-      mode = "n";
-      key = "<leader>ft";
-      action = "<cmd>lua Snacks.terminal()<cr>";
-      options.desc = "Terminal (Root Dir)";
-    }
-    {
-      mode = "n";
-      key = "<C-/>";
-      action = "<cmd>lua Snacks.terminal()<cr>";
-      options.desc = "Terminal (Root Dir)";
-    }
-    {
-      mode = "t";
-      key = "<C-/>";
-      action = "<cmd>close<cr>";
-      options.desc = "Hide Terminal";
     }
 
     # UI switch (Toggle)
     {
       mode = "n";
       key = "<leader>uf";
-      action = "<cmd>lua vim.g.autoformat = not vim.g.autoformat<cr>";
+      action.__raw = "function() vim.g.autoformat = not vim.g.autoformat end";
       options.desc = "Toggle Auto Format (Global)";
     }
     {
@@ -385,64 +315,8 @@
     {
       mode = "n";
       key = "<leader>ud";
-      action = "<cmd>lua vim.diagnostic.enable(not vim.diagnostic.is_enabled())<cr>";
+      action.__raw = "function() vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end";
       options.desc = "Toggle Diagnostics";
-    }
-
-    # Diagnostics (Trouble)
-    {
-      mode = "n";
-      key = "<leader>xx";
-      action = "<cmd>Trouble diagnostics toggle<cr>";
-      options.desc = "Diagnostics (Trouble)";
-    }
-    {
-      mode = "n";
-      key = "<leader>xX";
-      action = "<cmd>Trouble diagnostics toggle filter.buf=0<cr>";
-      options.desc = "Buffer Diagnostics (Trouble)";
-    }
-
-    # Scratchpad (Snacks)
-    {
-      mode = "n";
-      key = "<leader>.";
-      action = "<cmd>lua Snacks.scratch()<CR>";
-      options.desc = "Toggle Scratchpad";
-    }
-    {
-      mode = "n";
-      key = "<leader>S";
-      action = "<cmd>lua Snacks.scratch.select()<CR>";
-      options.desc = "Select Scratchpad";
-    }
-    {
-      mode = "n";
-      key = "<leader>dps";
-      action = "<cmd>lua Snacks.profiler.scratch()<CR>";
-      options.desc = "Profiler Scratch Buffer";
-    }
-
-    # Persistence
-    {
-      key = "<leader>qs";
-      action = ''<cmd>lua require("persistence").load()<CR>'';
-      options.desc = "Restore Session";
-    }
-    {
-      key = "<leader>qS";
-      action = ''<cmd>lua require("persistence").select()<CR>'';
-      options.desc = "Select Session";
-    }
-    {
-      key = "<leader>ql";
-      action = ''<cmd>lua require("persistence").load({ last = true })<CR>'';
-      options.desc = "Restore Last Session";
-    }
-    {
-      key = "<leader>qd";
-      action = ''<cmd>lua require("persistence").stop()<CR>'';
-      options.desc = "Don't Save Current Session";
     }
   ];
 }

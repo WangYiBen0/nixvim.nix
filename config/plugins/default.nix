@@ -5,7 +5,7 @@ _: {
     ./editor
     ./lang
     ./ui
-    ./utils
+    ./util
 
     ./lz-n.nix
   ];

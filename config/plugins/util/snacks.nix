@@ -37,7 +37,6 @@
             indent = 2;
             padding = 1;
           }
-          # { section = "startup"; } # Note: unavailable as the plugin manager is not lazy.nvim
         ];
 
         preset = {
@@ -88,7 +87,6 @@
       picker.enabled = true;
       quickfile.enabled = true;
       scope.enabled = true;
-      scratch.enabled = true;
       scroll.enabled = true;
       statuscolumn.enabled = true;
 
@@ -112,4 +110,113 @@
       };
     };
   };
+
+  keymaps = [
+    {
+      key = "<leader>n";
+      action.__raw = ''
+        function()
+          if Snacks.config.picker and Snacks.config.picker.enabled then
+            Snacks.picker.notifications()
+          else
+            Snacks.notifier.show_history()
+          end
+        end
+      '';
+      options.desc = "Notification History";
+    }
+    {
+      key = "<leader>un";
+      action.__raw = "function() Snacks.notifier.hide() end";
+      options.desc = "Dismiss All Notifications";
+    }
+    {
+      mode = "n";
+      key = "<leader>.";
+      action.__raw = "function() Snacks.scratch() end";
+      options.desc = "Toggle Scratchpad";
+    }
+    {
+      mode = "n";
+      key = "<leader>S";
+      action.__raw = "function() Snacks.scratch.select() end";
+      options.desc = "Select Scratchpad";
+    }
+    {
+      mode = "n";
+      key = "<leader>dps";
+      action.__raw = "function() Snacks.profiler.scratch() end";
+      options.desc = "Profiler Scratch Buffer";
+    }
+
+    # Floating terminal
+    {
+      mode = "n";
+      key = "<leader>ft";
+      action.__raw = "function() Snacks.terminal() end";
+      options.desc = "Terminal (Root Dir)";
+    }
+    {
+      mode = "n";
+      key = "<C-/>";
+      action.__raw = "function() Snacks.terminal() end";
+      options.desc = "Terminal (Root Dir)";
+    }
+    {
+      mode = "t";
+      key = "<C-/>";
+      action = "<cmd>close<cr>";
+      options.desc = "Hide Terminal";
+    }
+
+    # --- Search ---
+    {
+      mode = "n";
+      key = "<leader><space>";
+      action.__raw = "function() Snacks.picker.smart() end";
+      options.desc = "Smart Find Files";
+    }
+    {
+      mode = "n";
+      key = "<leader>ff";
+      action.__raw = "function() Snacks.picker.files() end";
+      options.desc = "Find Files";
+    }
+    {
+      mode = "n";
+      key = "<leader>fr";
+      action.__raw = "function() Snacks.picker.recent() end";
+      options.desc = "Recent Files";
+    }
+    {
+      mode = "n";
+      key = "<leader>fb";
+      action.__raw = "function() Snacks.picker.buffers() end";
+      options.desc = "Buffers";
+    }
+    {
+      mode = "n";
+      key = "<leader>sg";
+      action.__raw = "function() Snacks.picker.grep() end";
+      options.desc = "Grep (Global Search)";
+    }
+    {
+      mode = "n";
+      key = "<leader>sw";
+      action.__raw = "function() Snacks.picker.grep_word() end";
+      options.desc = "Search Word Under Cursor";
+    }
+    {
+      mode = "n";
+      key = "<leader>sk";
+      action.__raw = "function() Snacks.picker.keymaps() end";
+      options.desc = "Search Keymaps";
+    }
+    {
+      mode = "n";
+      key = "<leader>sq";
+      action.__raw = "function() Snacks.picker.qflist() end";
+      options.desc = "Quickfix List";
+    }
+  ];
 }
