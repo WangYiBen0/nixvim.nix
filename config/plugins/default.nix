@@ -3,6 +3,7 @@ _: {
     ./coding
     ./edit
     ./editor
+    ./formatting
     ./lang
     ./ui
     ./util
