@@ -4,7 +4,9 @@ _: {
     ./edit
     ./editor
     ./formatting
-    ./lang
+    ./linting
+    ./lsp
+    ./treesitter
     ./ui
     ./util
 

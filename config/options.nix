@@ -28,7 +28,7 @@
     shfmt
   ];
 
-  clipboard.providers = {
+  clipboard.providers = pkgs.lib.mkIf pkgs.stdenv.isLinux {
     wl-copy.enable = true;
   };
 
