@@ -2,7 +2,9 @@
   plugins.snacks = {
     enable = true;
     settings = {
+      # animinate.enabled = false;
       bigfile.enabled = true;
+      # bufdelete.enabled = false;
 
       dashboard = {
         enabled = true;
@@ -75,39 +77,43 @@
         };
       };
 
+      # debug.enabled = false;
+      # dim.enabled = false;
       explorer.enabled = true;
+      # gh.enabled = false;
+      # git.enabled = false;
+      # gitbrowse.enabled = false;
       image.enabled = true;
+      indent.enabled = false;
       input.enabled = true;
+      # keymaps.enabled = false;
+      # layout.enabled =false;
+      # lazygit.enabled=false;
 
       notifier = {
         enabled = true;
         timeout = 3000;
       };
 
+      # notify.enabled = false;
       picker.enabled = true;
+      # profiler.enabled = false;
       quickfile.enabled = true;
       scope.enabled = true;
+      scratch.enabled = true;
       scroll.enabled = true;
       statuscolumn.enabled = true;
-
-      terminal = {
-        enabled = true;
-        # win = {
-        #   keys = {
-        #     # nav_h.__raw = ''"<C-h>", term_nav("h"), desc = "Go to Left Window", expr = true, mode = "t"'';
-        #     # nav_j.__raw = ''"<C-j>", term_nav("j"), desc = "Go to Lower Window", expr = true, mode = "t"'';
-        #     # nav_k.__raw = ''"<C-k>", term_nav("k"), desc = "Go to Upper Window", expr = true, mode = "t"'';
-        #     # nav_l.__raw = ''"<C-l>", term_nav("l"), desc = "Go to Right Window", expr = true, mode = "t"'';
-        #     hide_slash.__raw = ''"<C-/>", "hide", desc = "Hide Terminal", mode = "t"'';
-        #     hide_underscore.__raw = ''"<c-_>", "hide", desc = "which_key_ignore", mode = "t"'';
-        #   };
-        # };
-      };
+      terminal.enabled = true;
+      toggle.enabled = true;
+      # util.enabled = false;
+      # win.enabled = false;
 
       words = {
         enabled = true;
         debounce = 100;
       };
+
+      # zen.enabled = false;
     };
   };
 
@@ -217,6 +223,26 @@
       key = "<leader>sq";
       action.__raw = "function() Snacks.picker.qflist() end";
       options.desc = "Quickfix List";
+    }
+
+    # File explorer (Snacks)
+    {
+      mode = "n";
+      key = "<leader>e";
+      action.__raw = "function() Snacks.explorer() end";
+      options.desc = "Explorer Snacks (Root Dir)";
+    }
+    {
+      mode = "n";
+      key = "<leader>fe";
+      action.__raw = "function() Snacks.explorer() end";
+      options.desc = "Explorer Snacks (Root Dir)";
+    }
+    {
+      mode = "n";
+      key = "<leader>E";
+      action.__raw = "function() Snacks.explorer({cwd = vim.fn.getcwd()}) end";
+      options.desc = "Explorer Snacks (cwd)";
     }
   ];
 }
