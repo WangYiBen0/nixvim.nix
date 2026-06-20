@@ -84,7 +84,7 @@
       # git.enabled = false;
       # gitbrowse.enabled = false;
       image.enabled = true;
-      indent.enabled = false;
+      indent.enabled = true;
       input.enabled = true;
       # keymaps.enabled = false;
       # layout.enabled =false;

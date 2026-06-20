@@ -17,7 +17,7 @@
         };
 
         keymap = {
-          preset = "enter";
+          preset = "none";
 
           "<Tab>" = [
             "select_next"
@@ -29,6 +29,10 @@
           ];
           "<C-y>" = [
             "select_and_accept"
+          ];
+          "<CR>" = [
+            "select_and_accept"
+            "fallback"
           ];
         };
 
