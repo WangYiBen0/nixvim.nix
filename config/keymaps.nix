@@ -273,26 +273,6 @@
     }
 
     # --- Tools/UI ---
-    # File explorer (Snacks)
-    {
-      mode = "n";
-      key = "<leader>e";
-      action.__raw = "function() Snacks.explorer() end";
-      options.desc = "Explorer Snacks (Root Dir)";
-    }
-    {
-      mode = "n";
-      key = "<leader>fe";
-      action.__raw = "function() Snacks.explorer() end";
-      options.desc = "Explorer Snacks (Root Dir)";
-    }
-    {
-      mode = "n";
-      key = "<leader>E";
-      action.__raw = "function() Snacks.explorer({cwd = vim.fn.getcwd()}) end";
-      options.desc = "Explorer Snacks (cwd)";
-    }
-
     # UI switch (Toggle)
     {
       mode = "n";

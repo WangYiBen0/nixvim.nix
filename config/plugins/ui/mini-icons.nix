@@ -1,8 +1,8 @@
 {
-  plugins.mini = {
+  plugins.mini-icons = {
     enable = true;
-
-    modules.icons = {
+    mockDevIcons = true;
+    settings = {
       style = "default";
       file = {
         ".keep" = {
@@ -21,6 +21,5 @@
         };
       };
     };
-    mockDevIcons = true;
   };
 }

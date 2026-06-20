@@ -1,9 +1,11 @@
 _: {
   imports = [
     ./coding
-    ./edit
     ./editor
-    ./lang
+    ./formatting
+    ./linting
+    ./lsp
+    ./treesitter
     ./ui
     ./util
 

@@ -67,6 +67,7 @@
 
           # Development shell with pre-commit hooks enabled
           devShells.default = pkgs.mkShell {
+            packages = [ config.packages.default ];
             # Automatically installs git hooks when entering the shell
             inherit (config.pre-commit) shellHook;
           };
@@ -81,7 +82,6 @@
               # Pass extra arguments to your configuration
               extraSpecialArgs = {
                 inherit self;
-                # inherit (inputs) foo;
               };
             };
           };

@@ -28,7 +28,7 @@
     shfmt
   ];
 
-  clipboard.providers = {
+  clipboard.providers = pkgs.lib.mkIf pkgs.stdenv.isLinux {
     wl-copy.enable = true;
   };
 
@@ -114,8 +114,8 @@
     maplocalleader = "\\";
     autoformat = true;
     snacks_animate = true;
-    lazyvim_picker = "auto";
-    lazyvim_cmp = "auto";
+    # lazyvim_picker = "auto";
+    # lazyvim_cmp = "auto";
     ai_cmp = true;
     root_spec = [
       "lsp"
