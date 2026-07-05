@@ -1,10 +1,5 @@
 { pkgs, ... }:
 {
-  withNodeJs = true;
-  withPerl = true;
-  withPython3 = true;
-  withRuby = true;
-
   dependencies = {
     fd.enable = true;
     nodejs.enable = true;
