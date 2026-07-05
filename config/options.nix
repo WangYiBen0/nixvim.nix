@@ -42,6 +42,7 @@
     conceallevel = 2;
     confirm = true;
     cursorline = true;
+    exrc = true;
     expandtab = true;
     fillchars = {
       foldopen = "";
