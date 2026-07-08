@@ -27,7 +27,6 @@
     wl-copy.enable = true;
   };
 
-  # options (converted from LazyVim)
   opts = {
     autowrite = true;
     clipboard = {
@@ -50,10 +49,6 @@
     foldlevel = 99;
     foldmethod = "indent";
     foldtext = "";
-
-    # formatexpr = { __raw = "v:lua.LazyVim.format.formatexpr()"; };
-    # statuscolumn = { __raw = "v:lua.LazyVim.statuscolumn()"; };
-
     formatoptions = "jcroqlnt";
     grepformat = "%f:%l:%c:%m";
     grepprg = "rg --vimgrep";
@@ -110,8 +105,6 @@
     maplocalleader = "\\";
     autoformat = true;
     snacks_animate = true;
-    # lazyvim_picker = "auto";
-    # lazyvim_cmp = "auto";
     ai_cmp = true;
     root_spec = [
       "lsp"
