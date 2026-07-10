@@ -30,6 +30,7 @@
     servers = {
       bashls.enable = true;
       clangd.enable = true;
+      csharp_ls.enable = true;
       fish_lsp.enable = true;
       gopls.enable = true;
       html.enable = true;
