@@ -35,6 +35,7 @@
       gopls.enable = true;
       html.enable = true;
       jsonls.enable = true;
+      just.enable = true;
 
       lua_ls = {
         enable = true;
@@ -76,6 +77,7 @@
       };
 
       systemd_ls.enable = true;
+      taplo.enable = true;
       texlab.enable = true;
       ts_ls.enable = true;
       tinymist.enable = true;

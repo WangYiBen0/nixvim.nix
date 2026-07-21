@@ -10,9 +10,16 @@
       formatters_by_ft = {
         csharp = [ "csharpier" ];
         lua = [ "stylua" ];
-        python = [ "black" ];
-        nix = [ "nixfmt" ];
         javascript = [ "prettierd" ];
+        json = [ "prettierd" ];
+        jsonc = [ "prettierd" ];
+        just = [ "just" ];
+        kdl = [ "kdlfmt" ];
+        nix = [ "nixfmt" ];
+        python = [ "black" ];
+        toml = [ "taplo" ];
+        xml = [ "xmllint" ];
+        yaml = [ "prettierd" ];
       };
     };
   };
