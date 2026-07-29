@@ -17,6 +17,7 @@
 
     lintersByFt = {
       fish = [ "fish" ];
+      rust = [ "clippy" ];
     };
   };
 }

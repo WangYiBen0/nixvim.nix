@@ -17,6 +17,7 @@
         kdl = [ "kdlfmt" ];
         nix = [ "nixfmt" ];
         python = [ "black" ];
+        rust = [ "rustfmt" ];
         toml = [ "taplo" ];
         xml = [ "xmllint" ];
         yaml = [ "prettierd" ];
