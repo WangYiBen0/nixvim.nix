@@ -85,7 +85,7 @@
         }:
         {
           # Define the formatter for `nix fmt`
-          formatter = pkgs.nixfmt-tree;
+          formatter = pkgs.nixfmt;
 
           # Configure pre-commit hooks
           pre-commit = {

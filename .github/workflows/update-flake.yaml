@@ -1,8 +1,8 @@
 name: "Update Flake Lock"
 
 on:
-  # schedule:
-  #   - cron: "0 0 * * 1"
+  schedule:
+    - cron: "0 0 * * 1"
   workflow_dispatch:
 
 jobs:
@@ -26,3 +26,28 @@ jobs:
             dependencies
             automated
           commit-msg: "chore(deps): update flake.lock"
+
+      - name: Checkout repository as myself (with PAT)
+        if: ${{ steps.update.outputs.pull-request-number }}
+        uses: actions/checkout@v4
+        with:
+          token: "${{ secrets.UPDATE_TOKEN }}"
+
+      - name: Checkout the PR branch
+        if: ${{ steps.update.outputs.pull-request-number }}
+        run: git checkout update_flake_lock_action
+
+      - name: Build nixvim and push to Cachix
+        if: ${{ steps.update.outputs.pull-request-number }}
+        run: |
+          nix-store --query --requisites \
+            $(nix-store --query --deriver $(nix build --print-out-paths .)) \
+            | cachix push w1ngd1nga5ter
+
+      - name: Amend commit with human committer; ensure CI will run
+        if: ${{ steps.update.outputs.pull-request-number }}
+        run: git commit --amend --no-edit
+
+      - name: Force push changes to CI branch
+        if: ${{ steps.update.outputs.pull-request-number }}
+        run: git push origin update_flake_lock_action --force
