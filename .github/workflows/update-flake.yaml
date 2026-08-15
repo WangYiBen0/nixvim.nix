@@ -2,7 +2,7 @@ name: "Update Flake Lock"
 
 on:
   schedule:
-    - cron: "0 0 * * 1"
+    - cron: "0 12 * * *" # 12:00 everday
   workflow_dispatch:
 
 jobs:
