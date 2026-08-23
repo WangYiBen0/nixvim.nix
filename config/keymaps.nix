@@ -66,6 +66,22 @@
       options.desc = "Move Up";
     }
 
+    # --- Save File ---
+    {
+      mode = [
+        "i"
+        "x"
+        "n"
+        "s"
+      ];
+      key = "<C-s>";
+      action = "<cmd>w<cr><esc>";
+      options = {
+        silent = true;
+        desc = "Save File";
+      };
+    }
+
     # ^[ -> :nohighlight
     {
       mode = [

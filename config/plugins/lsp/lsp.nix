@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   plugins.lsp = {
     enable = true;
@@ -30,7 +31,7 @@
     servers = {
       bashls.enable = true;
       clangd.enable = true;
-      csharp_ls.enable = true;
+      csharp_ls.enable = pkgs.stdenv.hostPlatform.isLinux;
       fish_lsp.enable = true;
       gopls.enable = true;
       html.enable = true;
