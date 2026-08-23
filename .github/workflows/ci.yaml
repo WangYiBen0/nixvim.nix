@@ -1,0 +1,89 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+  pull-requests: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v22
+        with:
+          extra-conf: |
+            experimental-features = nix-command flakes
+
+      - name: Enable Magic Nix Cache
+        uses: DeterminateSystems/magic-nix-cache-action@v14
+        with:
+          use-flakehub: "enabled"
+
+      - name: Set up Cachix
+        uses: cachix/cachix-action@v17
+        with:
+          name: w1ngd1nga5ter
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+          extraPullNames: nix-community,niri,nixpkgs-python
+
+      - name: Check Flake
+        run: nix flake check
+
+      - name: Auto-merge automated update PRs
+        if: github.event_name == 'pull_request' && github.head_ref == 'update_flake_lock_action'
+        run: gh pr merge "${{ github.event.pull_request.number }}" --rebase
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+  cache:
+    # Serialised after check so the shared nixpkgs closure is realised once
+    needs: check
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v22
+        with:
+          extra-conf: |
+            experimental-features = nix-command flakes
+
+      - name: Enable Magic Nix Cache
+        uses: DeterminateSystems/magic-nix-cache-action@v14
+        with:
+          use-flakehub: "enabled"
+
+      - name: Set up Cachix
+        uses: cachix/cachix-action@v17
+        with:
+          name: w1ngd1nga5ter
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+          extraPullNames: nix-community,niri,nixpkgs-python
+
+      - name: Build packages and push closure to Cachix
+        run: |
+          set -euo pipefail
+          mapfile -t pkgs < <(nix eval .#packages.x86_64-linux --apply builtins.attrNames --json | jq -r '.[]')
+          installables=()
+          for p in "${pkgs[@]}"; do
+            installables+=(".#packages.x86_64-linux.$p")
+          done
+          echo "==> Building: ${installables[*]}"
+          nix build --no-link "${installables[@]}"
+          nix path-info "${installables[@]}" | cachix push w1ngd1nga5ter

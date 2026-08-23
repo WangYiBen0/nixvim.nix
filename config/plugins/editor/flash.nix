@@ -44,6 +44,7 @@
       mode = [ "c" ];
       action.__raw = ''function() require("flash").toggle() end'';
       options.desc = "Toggle Flash Search";
+      options.silent = true;
     }
 
     # Simulate nvim-treesitter incremental selection
