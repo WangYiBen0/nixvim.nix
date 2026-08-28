@@ -2,17 +2,10 @@
   description = "A Nixvim configuration";
 
   inputs = {
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.flake-parts.follows = "flake-parts";
-    };
+    nixvim.url = "github:nix-community/nixvim";
 
     nixpkgs.follows = "nixvim/nixpkgs";
-
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "nixpkgs";
-    };
+    flake-parts.follows = "nixvim/flake-parts";
 
     git-hooks-nix = {
       url = "github:cachix/git-hooks.nix";
@@ -74,6 +67,11 @@
             enable = true;
             imports = [ self.nixvimModules.default ];
           };
+        };
+
+        flakehub = {
+          version = "0.1.0";
+          description = "a nixvim configuration";
         };
       };
 
