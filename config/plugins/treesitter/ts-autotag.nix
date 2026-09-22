@@ -1,0 +1,10 @@
+{
+  plugins.ts-autotag = {
+    enable = true;
+    lazyLoad.settings.event = [
+      "BufReadPost"
+      "BufNewFile"
+      "BufWritePre"
+    ];
+  };
+}
