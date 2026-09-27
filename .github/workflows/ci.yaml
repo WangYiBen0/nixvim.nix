@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   id-token: write
   pull-requests: write
 
@@ -44,9 +44,9 @@ jobs:
 
       - name: Auto-merge automated update PRs
         if: github.event_name == 'pull_request' && github.head_ref == 'update_flake_lock_action'
-        run: gh pr merge "${{ github.event.pull_request.number }}" --rebase
+        run: gh pr merge "${{ github.event.pull_request.number }}" --rebase --delete-branch
         env:
-          GH_TOKEN: ${{ secrets.UPDATE_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
 
   cache:
     # Serialised after check so the shared nixpkgs closure is realised once
