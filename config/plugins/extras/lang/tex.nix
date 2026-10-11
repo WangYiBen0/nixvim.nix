@@ -1,0 +1,16 @@
+# LazyVim extra: lang.tex
+# Ported from .lazyvim-ref/lua/lazyvim/plugins/extras/lang/tex.lua
+# Only active when listed in `lazyvim.extras`.
+{ lib, config, ... }:
+{
+  config = lib.mkIf (lib.elem "lang.tex" config.lazyvim.extras) {
+
+    plugins = {
+      lsp = {
+        servers = {
+          texlab.enable = true;
+        };
+      };
+    };
+  };
+}

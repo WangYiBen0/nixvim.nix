@@ -1,3 +1,4 @@
+{ config, ... }:
 {
   plugins.treesitter = {
     enable = true;
@@ -34,7 +35,8 @@
         "vimdoc"
         "xml"
         "yaml"
-      ];
+      ]
+      ++ config.lazyvim.extraTreesitterParsers;
     };
 
     nixvimInjections = true;
