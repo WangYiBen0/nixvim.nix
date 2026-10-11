@@ -18,18 +18,14 @@
           "ministarter"
           "snacks_dashboard"
         ];
-        # Kept from the pre-existing config (upstream relies on theme defaults).
-        # The section separators are the original powerline glyphs U+F0B8 /
-        # U+F0BA; they are written via JSON escapes so the bytes cannot be
-        # silently lost when this file is rewritten.
-        component_separators = {
-          left = "";
-          right = "";
-        };
-        section_separators = {
-          left = builtins.fromJSON "\"\\uf0b8\"";
-          right = builtins.fromJSON "\"\\uf0ba\"";
-        };
+        # NOTE: upstream LazyVim sets neither `component_separators` nor
+        # `section_separators`, so lualine's defaults apply. Those defaults are
+        # the standard Powerline glyphs — U+E0B0/U+E0B2 for sections and
+        # U+E0B1/U+E0B3 for components (see lualine/lua/lualine/config.lua).
+        # The pre-existing config set section separators to U+F0B8/U+F0BA, which
+        # are Font Awesome private-use glyphs rather than separators, and blanked
+        # the component ones; that is what made the separators look wrong, so
+        # both settings are dropped here to match LazyVim.
       };
 
       sections = {
