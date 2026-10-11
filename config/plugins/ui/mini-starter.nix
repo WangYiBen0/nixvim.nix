@@ -1,30 +1,32 @@
-{ lib, ... }:
+{ lib, config, ... }:
 let
   # Upstream: `local pad = string.rep(" ", 22)`
   pad = lib.strings.concatStrings (lib.lists.replicate 22 " ");
 in
 {
   # LazyVim's ui.mini-starter extra disables the Snacks dashboard and replaces
-  # it with mini.starter (user-approved: this intentionally supersedes the
-  # customised Snacks dashboard in config/plugins/util/snacks.nix).
-  # mkForce because snacks.nix enables the dashboard unconditionally.
-  plugins.snacks.settings.dashboard.enabled = lib.mkForce false;
+  # it with mini.starter. Gated on `lazyvim.miniProfile` so the default profile
+  # keeps the customised Snacks dashboard.
+  plugins.snacks.settings.dashboard.enabled = lib.mkIf config.lazyvim.miniProfile (lib.mkForce false);
 
   plugins.mini-starter = {
-    enable = true;
+    enable = config.lazyvim.miniProfile;
     lazyLoad.settings.event = [ "VimEnter" ];
 
     settings = {
       evaluate_single = true;
 
+      # The user's NIXVIM banner, byte-identical to the one the Snacks dashboard
+      # uses in config/plugins/util/snacks.nix. Emitted as Lua table fields, so
+      # the commas below are Lua (not Nix) separators.
       header.__raw = ''
         table.concat({
-          "            ██╗      █████╗ ███████╗██╗   ██╗██╗   ██╗██╗███╗   ███╗          Z",
-          "            ██║     ██╔══██╗╚══███╔╝╚██╗ ██╔╝██║   ██║██║████╗ ████║      Z    ",
-          "            ██║     ███████║  ███╔╝  ╚████╔╝ ██║   ██║██║██╔████╔██║   z       ",
-          "            ██║     ██╔══██║ ███╔╝    ╚██╔╝  ╚██╗ ██╔╝██║██║╚██╔╝██║ z         ",
-          "            ███████╗██║  ██║███████╗   ██║    ╚████╔╝ ██║██║ ╚═╝ ██║           ",
-          "            ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝     ╚═══╝  ╚═╝╚═╝     ╚═╝           ",
+          "███╗   ██╗ ██╗ ██╗  ██╗    ██╗   ██╗██╗███╗   ███╗",
+          "████╗  ██║ ██║ ╚██╗██╔╝    ██║   ██║██║████╗ ████║",
+          "██╔██╗ ██║ ██║  ╚███╔╝     ██║   ██║██║██╔████╔██║",
+          "██║╚██╗██║ ██║  ██╔██╗     ╚██╗ ██╔╝██║██║╚██╔╝██║",
+          "██║ ╚████║ ██║ ██╔╝ ██╗     ╚████╔╝ ██║██║ ╚═╝ ██║",
+          "╚═╝  ╚═══╝ ╚═╝ ╚═╝  ╚═╝      ╚═══╝  ╚═╝╚═╝     ╚═╝",
         }, "\n")
       '';
 
@@ -59,14 +61,14 @@ in
           action = "lua require('persistence').load()";
           section = "${pad}Session";
         }
-        # NOTE: upstream's "Lazy Extras" (`:LazyExtras`) and "Lazy" (`:Lazy`)
-        # items are not portable to this static port: lazy.nvim is deliberately
-        # not implemented, so there is no extras UI to open.
         {
           name = "Quit";
           action = "qa";
           section = "${pad}Built-in";
         }
+        # NOTE: upstream also has "Lazy Extras" (`:LazyExtras`) and "Lazy"
+        # (`:Lazy`) items. lazy.nvim is deliberately not part of this static
+        # port, so there is no extras UI to open and they are omitted.
       ];
 
       content_hooks = [

@@ -1,10 +1,10 @@
-{ lib, ... }:
+{ lib, config, ... }:
 {
   # LazyVim's editor.mini-diff extra replaces gitsigns.nvim with mini.diff.
   # mkForce because gitsigns.nix enables it unconditionally.
-  plugins.gitsigns.enable = lib.mkForce false;
+  plugins.gitsigns.enable = lib.mkIf config.lazyvim.miniProfile (lib.mkForce false);
   plugins.mini-diff = {
-    enable = true;
+    enable = config.lazyvim.miniProfile;
     lazyLoad.settings.event = [ "DeferredUIEnter" ];
     settings = {
       view = {

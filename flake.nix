@@ -116,6 +116,21 @@
                 inherit self;
               };
             };
+
+            # LazyVim's *mini* profile: the mini.* extras replace the defaults
+            # (mini.starter start screen, mini.diff, mini.snippets, ...).
+            # Build with `nix build .#mini` / `nix run .#mini -- <file>`.
+            # The default configuration keeps `lazyvim.miniProfile = false`.
+            mini = inputs.nixvim.lib.evalNixvim {
+              inherit system;
+              modules = [
+                self.nixvimModules.default
+                { lazyvim.miniProfile = true; }
+              ];
+              extraSpecialArgs = {
+                inherit self;
+              };
+            };
           };
         };
     };
