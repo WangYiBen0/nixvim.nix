@@ -29,12 +29,23 @@
         )
       end
 
-      local function has(method)
-        method = method:find("/") and method or ("textDocument/" .. method)
-        local ok, supported = pcall(function()
-          return client:supports_method(method, { bufnr = bufnr })
-        end)
-        return ok and supported
+      -- Upstream accepts either a single method (`has = "definition"`) or a
+      -- list of them (`has = { "workspace/didRenameFiles", ... }`); the keymap
+      -- is registered when any of the methods is supported.
+      local function has(methods)
+        if type(methods) == "string" then
+          methods = { methods }
+        end
+        for _, method in ipairs(methods) do
+          method = method:find("/") and method or ("textDocument/" .. method)
+          local ok, supported = pcall(function()
+            return client:supports_method(method, { bufnr = bufnr })
+          end)
+          if ok and supported then
+            return true
+          end
+        end
+        return false
       end
 
       -- stylua: ignore start
