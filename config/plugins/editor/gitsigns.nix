@@ -1,3 +1,4 @@
+{ lib, config, ... }:
 {
   plugins.gitsigns = {
     enable = true;
@@ -87,7 +88,9 @@
     };
   };
 
-  keymaps = [
+  # Gated so the keymaps disappear when the mini.diff extra disables gitsigns
+  # (LazyVim's editor.mini-diff extra sets `gitsigns.nvim = { enabled = false }`).
+  keymaps = lib.mkIf config.plugins.gitsigns.enable [
     {
       key = "<leader>uG";
       mode = [ "n" ];

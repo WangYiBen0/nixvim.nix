@@ -93,6 +93,23 @@
       options.desc = "Escape and Clear hlsearch";
     }
 
+    # Undo breakpoints
+    {
+      mode = "i";
+      key = ",";
+      action = ",<c-g>u";
+    }
+    {
+      mode = "i";
+      key = ".";
+      action = ".<c-g>u";
+    }
+    {
+      mode = "i";
+      key = ";";
+      action = ";<c-g>u";
+    }
+
     # Better Indent
     {
       mode = "v";
@@ -313,6 +330,19 @@
       key = "<leader>ud";
       action.__raw = "function() vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end";
       options.desc = "Toggle Diagnostics";
+    }
+    # Additional toggles from LazyVim
+    {
+      mode = "n";
+      key = "<leader>ul";
+      action = "<cmd>set number!<cr>";
+      options.desc = "Toggle Line Numbers";
+    }
+    {
+      mode = "n";
+      key = "<leader>uL";
+      action = "<cmd>set relativenumber!<cr>";
+      options.desc = "Toggle Relative Line Numbers";
     }
   ];
 }

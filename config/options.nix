@@ -49,6 +49,7 @@
     foldlevel = 99;
     foldmethod = "indent";
     foldtext = "";
+    formatexpr = "v:lua.LazyVim.format.formatexpr()";
     formatoptions = "jcroqlnt";
     grepformat = "%f:%l:%c:%m";
     grepprg = "rg --vimgrep";
@@ -88,6 +89,10 @@
     splitbelow = true;
     splitkeep = "screen";
     splitright = true;
+    statuscolumn = {
+      __raw = ''"%%!v:lua.LazyVim.statuscolumn()"'';
+    };
+
     tabstop = 2;
     termguicolors = true;
     timeoutlen = 300;
