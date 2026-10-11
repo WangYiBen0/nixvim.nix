@@ -77,6 +77,22 @@ in
           __raw = ''require("mini.starter").gen_hook.aligning("center", "center")'';
         }
       ];
+
+      # Upstream shows "⚡ Neovim loaded N plugins in Xms" from lazy.nvim's
+      # stats. lazy.nvim is not part of this static port, so the plugin count is
+      # derived from the runtimepath pack dirs instead, and the startup-ms figure
+      # (only lazy.nvim knows it) is omitted.
+      footer.__raw = ''
+        function()
+          local count = 0
+          for _, rtp in ipairs(vim.api.nvim_list_runtime_paths()) do
+            if rtp:match("/pack/%w+/start/[^/]+$") or rtp:match("/pack/%w+/opt/[^/]+$") then
+              count = count + 1
+            end
+          end
+          return string.rep(" ", 8) .. "⚡ Neovim loaded " .. count .. " plugins"
+        end
+      '';
     };
   };
 }

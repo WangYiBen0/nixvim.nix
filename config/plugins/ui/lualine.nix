@@ -19,13 +19,16 @@
           "snacks_dashboard"
         ];
         # Kept from the pre-existing config (upstream relies on theme defaults).
+        # The section separators are the original powerline glyphs U+F0B8 /
+        # U+F0BA; they are written via JSON escapes so the bytes cannot be
+        # silently lost when this file is rewritten.
         component_separators = {
           left = "";
           right = "";
         };
         section_separators = {
-          left = "";
-          right = "";
+          left = builtins.fromJSON "\"\\uf0b8\"";
+          right = builtins.fromJSON "\"\\uf0ba\"";
         };
       };
 
