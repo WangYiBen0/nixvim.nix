@@ -1,13 +1,12 @@
 {
   plugins.mini-hipatterns = {
     enable = true;
-    # Upstream uses `LazyFile`, a lazy.nvim pseudo-event; this repo's equivalent
-    # (see treesitter.nix) is the set of real file events plus DeferredUIEnter.
+    # Upstream uses `LazyFile`, a lazy.nvim pseudo-event; its real equivalent is
+    # exactly these three file events (keeps it off the mini.starter screen).
     lazyLoad.settings.event = [
       "BufReadPost"
       "BufNewFile"
       "BufWritePre"
-      "DeferredUIEnter"
     ];
 
     settings = {

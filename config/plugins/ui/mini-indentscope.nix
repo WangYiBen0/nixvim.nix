@@ -2,13 +2,13 @@
 {
   plugins.mini-indentscope = {
     enable = true;
-    # Upstream uses `LazyFile`, a lazy.nvim pseudo-event. This repo's equivalent
-    # (see treesitter.nix) is the set of real file events plus DeferredUIEnter.
+    # Upstream uses `LazyFile`, a lazy.nvim pseudo-event. Its real equivalent is
+    # exactly these three file events — deliberately NOT DeferredUIEnter, so the
+    # indent scope does not load on the mini.starter start screen and draw there.
     lazyLoad.settings.event = [
       "BufReadPost"
       "BufNewFile"
       "BufWritePre"
-      "DeferredUIEnter"
     ];
     settings = {
       # symbol = "▏",
