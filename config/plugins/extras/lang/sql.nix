@@ -1,5 +1,5 @@
 # LazyVim extra: lang.sql
-# Ported from .lazyvim-ref/lua/lazyvim/plugins/extras/lang/sql.lua
+# Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/sql.lua
 # Only active when listed in `lazyvim.extras`.
 { lib, config, ... }:
 {

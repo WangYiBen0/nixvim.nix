@@ -1,5 +1,5 @@
 # LazyVim extra: lang.typst
-# Ported from .lazyvim-ref/lua/lazyvim/plugins/extras/lang/typst.lua
+# Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/typst.lua
 # Only active when listed in `lazyvim.extras`.
 { lib, config, ... }:
 {
@@ -8,5 +8,16 @@
     lazyvim.extraTreesitterParsers = [
       "typst"
     ];
+
+    plugins = {
+      lsp = {
+        servers = {
+          tinymist.enable = true;
+          tinymist.settings = {
+            formatterMode = "typstyle";
+          };
+        };
+      };
+    };
   };
 }

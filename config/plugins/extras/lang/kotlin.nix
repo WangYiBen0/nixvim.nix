@@ -1,5 +1,5 @@
 # LazyVim extra: lang.kotlin
-# Ported from .lazyvim-ref/lua/lazyvim/plugins/extras/lang/kotlin.lua
+# Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/kotlin.lua
 # Only active when listed in `lazyvim.extras`.
 { lib, config, ... }:
 {

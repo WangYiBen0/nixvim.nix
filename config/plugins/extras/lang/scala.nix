@@ -1,5 +1,5 @@
 # LazyVim extra: lang.scala
-# Ported from .lazyvim-ref/lua/lazyvim/plugins/extras/lang/scala.lua
+# Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/scala.lua
 # Only active when listed in `lazyvim.extras`.
 { lib, config, ... }:
 {

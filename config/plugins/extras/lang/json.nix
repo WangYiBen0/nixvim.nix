@@ -1,5 +1,5 @@
 # LazyVim extra: lang.json
-# Ported from .lazyvim-ref/lua/lazyvim/plugins/extras/lang/json.lua
+# Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/json.lua
 # Only active when listed in `lazyvim.extras`.
 { lib, config, ... }:
 {
@@ -8,5 +8,23 @@
     lazyvim.extraTreesitterParsers = [
       "json5"
     ];
+
+    plugins = {
+      lsp = {
+        servers = {
+          jsonls.enable = true;
+          jsonls.settings = {
+            json = {
+              validate = {
+                enable = true;
+              };
+              format = {
+                enable = true;
+              };
+            };
+          };
+        };
+      };
+    };
   };
 }

@@ -1,5 +1,5 @@
 # LazyVim extra: lang.git
-# Ported from .lazyvim-ref/lua/lazyvim/plugins/extras/lang/git.lua
+# Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/git.lua
 # Only active when listed in `lazyvim.extras`.
 { lib, config, ... }:
 {
@@ -7,10 +7,10 @@
     # treesitter parsers
     lazyvim.extraTreesitterParsers = [
       "git_config"
-      "gitcommit"
       "git_rebase"
-      "gitignore"
       "gitattributes"
+      "gitcommit"
+      "gitignore"
     ];
   };
 }

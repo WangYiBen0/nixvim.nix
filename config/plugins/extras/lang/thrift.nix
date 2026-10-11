@@ -1,5 +1,5 @@
 # LazyVim extra: lang.thrift
-# Ported from .lazyvim-ref/lua/lazyvim/plugins/extras/lang/thrift.lua
+# Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/thrift.lua
 # Only active when listed in `lazyvim.extras`.
 { lib, config, ... }:
 {

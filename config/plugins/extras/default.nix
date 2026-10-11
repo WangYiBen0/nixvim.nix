@@ -3,7 +3,9 @@
 # The catalog (including not-yet-ported names) is in ./registry.nix.
 _: {
   imports = [
+    ./ai/copilot-native.nix
     ./ai/copilot.nix
+    ./lang/angular.nix
     ./lang/ansible.nix
     ./lang/astro.nix
     ./lang/clangd.nix
@@ -12,6 +14,7 @@ _: {
     ./lang/dart.nix
     ./lang/docker.nix
     ./lang/dotnet.nix
+    ./lang/elixir.nix
     ./lang/elm.nix
     ./lang/ember.nix
     ./lang/erlang.nix
@@ -27,6 +30,7 @@ _: {
     ./lang/markdown.nix
     ./lang/nix.nix
     ./lang/nushell.nix
+    ./lang/ocaml.nix
     ./lang/php.nix
     ./lang/prisma.nix
     ./lang/python.nix
@@ -38,14 +42,18 @@ _: {
     ./lang/solidity.nix
     ./lang/sql.nix
     ./lang/svelte.nix
+    ./lang/tailwind.nix
     ./lang/terraform.nix
     ./lang/tex.nix
     ./lang/thrift.nix
     ./lang/twig.nix
     ./lang/typescript/biome.nix
+    ./lang/typescript/oxc.nix
     ./lang/typst.nix
     ./lang/vue.nix
+    ./lang/yaml.nix
     ./lang/zig.nix
+    ./linting/eslint.nix
     ./util/dot.nix
     ./util/rest.nix
   ];

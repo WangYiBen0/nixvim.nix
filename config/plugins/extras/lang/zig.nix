@@ -1,5 +1,5 @@
 # LazyVim extra: lang.zig
-# Ported from .lazyvim-ref/lua/lazyvim/plugins/extras/lang/zig.lua
+# Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/zig.lua
 # Only active when listed in `lazyvim.extras`.
 { lib, config, ... }:
 {

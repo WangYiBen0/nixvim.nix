@@ -1,5 +1,5 @@
 # LazyVim extra: lang.twig
-# Ported from .lazyvim-ref/lua/lazyvim/plugins/extras/lang/twig.lua
+# Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/twig.lua
 # Only active when listed in `lazyvim.extras`.
 { lib, config, ... }:
 {

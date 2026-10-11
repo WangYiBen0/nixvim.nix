@@ -1,5 +1,5 @@
 # LazyVim extra: lang.java
-# Ported from .lazyvim-ref/lua/lazyvim/plugins/extras/lang/java.lua
+# Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/java.lua
 # Only active when listed in `lazyvim.extras`.
 { lib, config, ... }:
 {
@@ -8,5 +8,13 @@
     lazyvim.extraTreesitterParsers = [
       "java"
     ];
+
+    plugins = {
+      lsp = {
+        servers = {
+          jdtls.enable = true;
+        };
+      };
+    };
   };
 }

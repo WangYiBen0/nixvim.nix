@@ -1,5 +1,5 @@
 # LazyVim extra: lang.ember
-# Ported from .lazyvim-ref/lua/lazyvim/plugins/extras/lang/ember.lua
+# Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/ember.lua
 # Only active when listed in `lazyvim.extras`.
 { lib, config, ... }:
 {

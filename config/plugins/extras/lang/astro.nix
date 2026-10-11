@@ -1,5 +1,5 @@
 # LazyVim extra: lang.astro
-# Ported from .lazyvim-ref/lua/lazyvim/plugins/extras/lang/astro.lua
+# Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/astro.lua
 # Only active when listed in `lazyvim.extras`.
 { lib, config, ... }:
 {

@@ -1,5 +1,5 @@
 # LazyVim extra: lang.dotnet
-# Ported from .lazyvim-ref/lua/lazyvim/plugins/extras/lang/dotnet.lua
+# Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/dotnet.lua
 # Only active when listed in `lazyvim.extras`.
 { lib, config, ... }:
 {
@@ -9,5 +9,14 @@
       "c_sharp"
       "fsharp"
     ];
+
+    plugins = {
+      lsp = {
+        servers = {
+          omnisharp.enable = true;
+          fsautocomplete.enable = true;
+        };
+      };
+    };
   };
 }

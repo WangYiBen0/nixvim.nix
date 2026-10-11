@@ -1,5 +1,5 @@
 # LazyVim extra: lang.clangd
-# Ported from .lazyvim-ref/lua/lazyvim/plugins/extras/lang/clangd.lua
+# Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/clangd.lua
 # Only active when listed in `lazyvim.extras`.
 { lib, config, ... }:
 {

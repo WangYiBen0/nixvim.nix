@@ -1,5 +1,5 @@
 # LazyVim extra: lang.tex
-# Ported from .lazyvim-ref/lua/lazyvim/plugins/extras/lang/tex.lua
+# Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/tex.lua
 # Only active when listed in `lazyvim.extras`.
 { lib, config, ... }:
 {

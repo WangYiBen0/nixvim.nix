@@ -1,5 +1,5 @@
 # LazyVim extra: lang.nix
-# Ported from .lazyvim-ref/lua/lazyvim/plugins/extras/lang/nix.lua
+# Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/nix.lua
 # Only active when listed in `lazyvim.extras`.
 { lib, config, ... }:
 {

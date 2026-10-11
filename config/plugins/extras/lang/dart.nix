@@ -1,5 +1,5 @@
 # LazyVim extra: lang.dart
-# Ported from .lazyvim-ref/lua/lazyvim/plugins/extras/lang/dart.lua
+# Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/dart.lua
 # Only active when listed in `lazyvim.extras`.
 { lib, config, ... }:
 {

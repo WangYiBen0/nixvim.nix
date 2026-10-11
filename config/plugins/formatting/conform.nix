@@ -1,6 +1,8 @@
 {
   plugins.conform-nvim = {
     enable = true;
+    # Package the formatters referenced by `formatters_by_ft` from nixpkgs.
+    autoInstall.enable = true;
     settings = {
       # NOTE: LazyVim deliberately does NOT set `format_on_save` for conform.
       # Saving is driven by `LazyVim.format` via its own `BufWritePre` autocmd

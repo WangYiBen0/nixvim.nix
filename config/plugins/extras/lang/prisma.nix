@@ -1,5 +1,5 @@
 # LazyVim extra: lang.prisma
-# Ported from .lazyvim-ref/lua/lazyvim/plugins/extras/lang/prisma.lua
+# Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/prisma.lua
 # Only active when listed in `lazyvim.extras`.
 { lib, config, ... }:
 {

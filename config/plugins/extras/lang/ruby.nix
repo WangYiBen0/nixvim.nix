@@ -1,5 +1,5 @@
 # LazyVim extra: lang.ruby
-# Ported from .lazyvim-ref/lua/lazyvim/plugins/extras/lang/ruby.lua
+# Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/ruby.lua
 # Only active when listed in `lazyvim.extras`.
 { lib, config, ... }:
 {
@@ -12,10 +12,10 @@
     plugins = {
       lsp = {
         servers = {
+          standardrb.enable = true;
           ruby_lsp.enable = true;
           solargraph.enable = true;
           rubocop.enable = true;
-          standardrb.enable = true;
         };
       };
     };

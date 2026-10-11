@@ -1,5 +1,5 @@
 # LazyVim extra: lang.erlang
-# Ported from .lazyvim-ref/lua/lazyvim/plugins/extras/lang/erlang.lua
+# Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/erlang.lua
 # Only active when listed in `lazyvim.extras`.
 { lib, config, ... }:
 {
@@ -9,6 +9,16 @@
       "erlang"
     ];
 
-    # not ported: nixvim has no LSP server module `erlangls`
+    plugins = {
+      lsp = {
+        servers = {
+          elp.enable = true;
+        };
+      };
+    };
+
+    # upstream uses `erlangls`, which lspconfig has removed;
+
+    # substituted with its supported successor `elp`.
   };
 }

@@ -1,5 +1,5 @@
 # LazyVim extra: lang.cmake
-# Ported from .lazyvim-ref/lua/lazyvim/plugins/extras/lang/cmake.lua
+# Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/cmake.lua
 # Only active when listed in `lazyvim.extras`.
 { lib, config, ... }:
 {

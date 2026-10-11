@@ -1,5 +1,5 @@
 # LazyVim extra: lang.php
-# Ported from .lazyvim-ref/lua/lazyvim/plugins/extras/lang/php.lua
+# Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/php.lua
 # Only active when listed in `lazyvim.extras`.
 { lib, config, ... }:
 {
@@ -12,8 +12,8 @@
     plugins = {
       lsp = {
         servers = {
-          intelephense.enable = true;
           phpactor.enable = true;
+          intelephense.enable = true;
         };
       };
       lint = {

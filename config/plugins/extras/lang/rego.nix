@@ -1,5 +1,5 @@
 # LazyVim extra: lang.rego
-# Ported from .lazyvim-ref/lua/lazyvim/plugins/extras/lang/rego.lua
+# Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/rego.lua
 # Only active when listed in `lazyvim.extras`.
 { lib, config, ... }:
 {
@@ -12,8 +12,8 @@
     plugins = {
       lsp = {
         servers = {
-          regal.enable = true;
           regols.enable = true;
+          regal.enable = true;
         };
       };
     };

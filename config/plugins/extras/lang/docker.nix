@@ -1,5 +1,5 @@
 # LazyVim extra: lang.docker
-# Ported from .lazyvim-ref/lua/lazyvim/plugins/extras/lang/docker.lua
+# Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/docker.lua
 # Only active when listed in `lazyvim.extras`.
 { lib, config, ... }:
 {

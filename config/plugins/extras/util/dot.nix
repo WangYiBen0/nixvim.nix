@@ -1,5 +1,5 @@
 # LazyVim extra: util.dot
-# Ported from .lazyvim-ref/lua/lazyvim/plugins/extras/util/dot.lua
+# Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/util/dot.lua
 # Only active when listed in `lazyvim.extras`.
 { lib, config, ... }:
 {

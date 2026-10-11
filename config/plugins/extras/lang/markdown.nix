@@ -1,5 +1,5 @@
 # LazyVim extra: lang.markdown
-# Ported from .lazyvim-ref/lua/lazyvim/plugins/extras/lang/markdown.lua
+# Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/markdown.lua
 # Only active when listed in `lazyvim.extras`.
 { lib, config, ... }:
 {

@@ -1,5 +1,5 @@
 # LazyVim extra: lang.python
-# Ported from .lazyvim-ref/lua/lazyvim/plugins/extras/lang/python.lua
+# Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/python.lua
 # Only active when listed in `lazyvim.extras`.
 { lib, config, ... }:
 {
@@ -9,5 +9,14 @@
       "ninja"
       "rst"
     ];
+
+    plugins = {
+      lsp = {
+        servers = {
+          ruff_lsp.enable = true;
+          ruff.enable = true;
+        };
+      };
+    };
   };
 }

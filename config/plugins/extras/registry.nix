@@ -1,13 +1,14 @@
 # Registry of LazyVim extras (all 115).
-# true  = a NixVim module exists under config/plugins/extras/
-# false = known to LazyVim but not yet ported to this static config
+# true  = a static port exists under config/plugins/extras/
+# false = known to LazyVim but not ported (its spec is driven by
+#         lazy.nvim-specific machinery: keys, dependencies, dap, ...)
 {
   "ai.avante" = false;
   "ai.claudecode" = false;
   "ai.codeium" = false;
   "ai.copilot" = true;
   "ai.copilot-chat" = false;
-  "ai.copilot-native" = false;
+  "ai.copilot-native" = true;
   "ai.sidekick" = false;
   "ai.supermaven" = false;
   "ai.tabnine" = false;
@@ -41,7 +42,7 @@
   "editor.telescope" = false;
   "formatting.black" = false;
   "formatting.prettier" = false;
-  "lang.angular" = false;
+  "lang.angular" = true;
   "lang.ansible" = true;
   "lang.astro" = true;
   "lang.clangd" = true;
@@ -50,7 +51,7 @@
   "lang.dart" = true;
   "lang.docker" = true;
   "lang.dotnet" = true;
-  "lang.elixir" = false;
+  "lang.elixir" = true;
   "lang.elm" = true;
   "lang.ember" = true;
   "lang.erlang" = true;
@@ -67,7 +68,7 @@
   "lang.markdown" = true;
   "lang.nix" = true;
   "lang.nushell" = true;
-  "lang.ocaml" = false;
+  "lang.ocaml" = true;
   "lang.php" = true;
   "lang.prisma" = true;
   "lang.python" = true;
@@ -79,7 +80,7 @@
   "lang.solidity" = true;
   "lang.sql" = true;
   "lang.svelte" = true;
-  "lang.tailwind" = false;
+  "lang.tailwind" = true;
   "lang.terraform" = true;
   "lang.tex" = true;
   "lang.thrift" = true;
@@ -87,14 +88,14 @@
   "lang.twig" = true;
   "lang.typescript.biome" = true;
   "lang.typescript.init" = false;
-  "lang.typescript.oxc" = false;
+  "lang.typescript.oxc" = true;
   "lang.typescript.tsc" = false;
   "lang.typescript.vtsls" = false;
   "lang.typst" = true;
   "lang.vue" = true;
-  "lang.yaml" = false;
+  "lang.yaml" = true;
   "lang.zig" = true;
-  "linting.eslint" = false;
+  "linting.eslint" = true;
   "lsp.neoconf" = false;
   "lsp.none-ls" = false;
   "test.core" = false;

@@ -1,5 +1,5 @@
 # LazyVim extra: lang.haskell
-# Ported from .lazyvim-ref/lua/lazyvim/plugins/extras/lang/haskell.lua
+# Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/haskell.lua
 # Only active when listed in `lazyvim.extras`.
 { lib, config, ... }:
 {
