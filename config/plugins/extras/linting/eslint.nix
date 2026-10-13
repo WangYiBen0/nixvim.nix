@@ -10,10 +10,10 @@
         servers = {
           eslint.enable = true;
           eslint.settings = {
+            format = true;
             workingDirectories = {
               mode = "auto";
             };
-            format = true;
           };
         };
       };

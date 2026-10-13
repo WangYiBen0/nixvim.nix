@@ -4,6 +4,7 @@
 { lib, config, ... }:
 {
   config = lib.mkIf (lib.elem "lang.terraform" config.lazyvim.extras) {
+
     # treesitter parsers
     lazyvim.extraTreesitterParsers = [
       "hcl"
@@ -18,8 +19,8 @@
       };
       lint = {
         lintersByFt = {
-          terraform = [ "terraform_validate" ];
           tf = [ "terraform_validate" ];
+          terraform = [ "terraform_validate" ];
         };
       };
     };

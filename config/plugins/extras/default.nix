@@ -3,8 +3,20 @@
 # The catalog (including not-yet-ported names) is in ./registry.nix.
 _: {
   imports = [
+    ./ai/avante.nix
+    ./ai/copilot-chat.nix
     ./ai/copilot-native.nix
     ./ai/copilot.nix
+    ./ai/sidekick.nix
+    ./coding/luasnip.nix
+    ./dap/core.nix
+    ./editor/aerial.nix
+    ./editor/fzf.nix
+    ./editor/mini-diff.nix
+    ./editor/neo-tree.nix
+    ./editor/outline.nix
+    ./editor/overseer.nix
+    ./editor/refactoring.nix
     ./lang/angular.nix
     ./lang/ansible.nix
     ./lang/astro.nix
@@ -54,7 +66,12 @@ _: {
     ./lang/yaml.nix
     ./lang/zig.nix
     ./linting/eslint.nix
+    ./test/core.nix
+    ./ui/edgy.nix
     ./util/dot.nix
+    ./util/gh.nix
+    ./util/gitui.nix
+    ./util/octo.nix
     ./util/rest.nix
   ];
 }

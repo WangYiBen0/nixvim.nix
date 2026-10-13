@@ -16,15 +16,15 @@
               };
             };
             yaml = {
-              schemaStore = {
-                enable = false;
-                url = "";
-              };
-              validate = true;
               keyOrdering = false;
+              schemaStore = {
+                url = "";
+                enable = false;
+              };
               format = {
                 enable = true;
               };
+              validate = true;
             };
           };
         };

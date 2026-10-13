@@ -4,6 +4,7 @@
 { lib, config, ... }:
 {
   config = lib.mkIf (lib.elem "lang.docker" config.lazyvim.extras) {
+
     # treesitter parsers
     lazyvim.extraTreesitterParsers = [
       "dockerfile"

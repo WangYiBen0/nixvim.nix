@@ -4,6 +4,7 @@
 { lib, config, ... }:
 {
   config = lib.mkIf (lib.elem "lang.rego" config.lazyvim.extras) {
+
     # treesitter parsers
     lazyvim.extraTreesitterParsers = [
       "rego"

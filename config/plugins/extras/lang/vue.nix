@@ -4,6 +4,7 @@
 { lib, config, ... }:
 {
   config = lib.mkIf (lib.elem "lang.vue" config.lazyvim.extras) {
+
     # treesitter parsers
     lazyvim.extraTreesitterParsers = [
       "css"
@@ -13,8 +14,8 @@
     plugins = {
       lsp = {
         servers = {
-          vue_ls.enable = true;
           vtsls.enable = true;
+          vue_ls.enable = true;
         };
       };
     };

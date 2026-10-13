@@ -4,6 +4,7 @@
 { lib, config, ... }:
 {
   config = lib.mkIf (lib.elem "lang.erlang" config.lazyvim.extras) {
+
     # treesitter parsers
     lazyvim.extraTreesitterParsers = [
       "erlang"
@@ -16,9 +17,5 @@
         };
       };
     };
-
-    # upstream uses `erlangls`, which lspconfig has removed;
-
-    # substituted with its supported successor `elp`.
   };
 }

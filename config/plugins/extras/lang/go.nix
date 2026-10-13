@@ -4,6 +4,8 @@
 { lib, config, ... }:
 {
   config = lib.mkIf (lib.elem "lang.go" config.lazyvim.extras) {
+    plugins.neotest.enable = true;
+
     # treesitter parsers
     lazyvim.extraTreesitterParsers = [
       "go"
@@ -18,22 +20,8 @@
           gopls.enable = true;
           gopls.settings = {
             gopls = {
-              directoryFilters = [
-                "-.git"
-                "-.vscode"
-                "-.idea"
-                "-.vscode-test"
-                "-node_modules"
-              ];
               gofumpt = true;
-              analyses = {
-                unusedparams = true;
-                unusedwrite = true;
-                useany = true;
-                nilness = true;
-              };
               codelenses = {
-                upgrade_dependency = true;
                 vendor = true;
                 generate = true;
                 gc_details = false;
@@ -41,19 +29,33 @@
                 run_govulncheck = true;
                 test = true;
                 tidy = true;
+                upgrade_dependency = true;
               };
+              analyses = {
+                unusedwrite = true;
+                useany = true;
+                nilness = true;
+                unusedparams = true;
+              };
+              usePlaceholders = true;
+              completeUnimported = true;
               hints = {
-                parameterNames = true;
                 rangeVariableTypes = true;
                 assignVariableTypes = true;
                 compositeLiteralFields = true;
                 compositeLiteralTypes = true;
                 constantValues = true;
                 functionTypeParameters = true;
+                parameterNames = true;
               };
-              usePlaceholders = true;
-              completeUnimported = true;
               staticcheck = true;
+              directoryFilters = [
+                "-.git"
+                "-.vscode"
+                "-.idea"
+                "-.vscode-test"
+                "-node_modules"
+              ];
             };
           };
         };

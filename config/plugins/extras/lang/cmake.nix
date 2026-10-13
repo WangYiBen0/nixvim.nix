@@ -4,6 +4,8 @@
 { lib, config, ... }:
 {
   config = lib.mkIf (lib.elem "lang.cmake" config.lazyvim.extras) {
+    plugins.cmake-tools.enable = true;
+
     # treesitter parsers
     lazyvim.extraTreesitterParsers = [
       "cmake"

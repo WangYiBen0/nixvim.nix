@@ -4,6 +4,8 @@
 { lib, config, ... }:
 {
   config = lib.mkIf (lib.elem "lang.php" config.lazyvim.extras) {
+    plugins.neotest.enable = true;
+
     # treesitter parsers
     lazyvim.extraTreesitterParsers = [
       "php"
@@ -12,8 +14,8 @@
     plugins = {
       lsp = {
         servers = {
-          phpactor.enable = true;
           intelephense.enable = true;
+          phpactor.enable = true;
         };
       };
       lint = {

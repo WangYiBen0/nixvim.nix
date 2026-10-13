@@ -4,6 +4,8 @@
 { lib, config, ... }:
 {
   config = lib.mkIf (lib.elem "lang.r" config.lazyvim.extras) {
+    plugins.neotest.enable = true;
+
     # treesitter parsers
     lazyvim.extraTreesitterParsers = [
       "r"

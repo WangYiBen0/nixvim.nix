@@ -4,6 +4,8 @@
 { lib, config, ... }:
 {
   config = lib.mkIf (lib.elem "lang.dotnet" config.lazyvim.extras) {
+    plugins.neotest.enable = true;
+
     # treesitter parsers
     lazyvim.extraTreesitterParsers = [
       "c_sharp"
@@ -13,8 +15,8 @@
     plugins = {
       lsp = {
         servers = {
-          omnisharp.enable = true;
           fsautocomplete.enable = true;
+          omnisharp.enable = true;
         };
       };
     };

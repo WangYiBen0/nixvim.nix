@@ -4,6 +4,7 @@
 { lib, config, ... }:
 {
   config = lib.mkIf (lib.elem "lang.markdown" config.lazyvim.extras) {
+    plugins.markdown-preview.enable = true;
 
     plugins = {
       lsp = {
@@ -17,5 +18,14 @@
         };
       };
     };
+
+    keymaps = [
+      {
+        mode = [ "n" ];
+        key = "<leader>cp";
+        action = "<cmd>MarkdownPreviewToggle<cr>";
+        options.desc = "Markdown Preview";
+      }
+    ];
   };
 }

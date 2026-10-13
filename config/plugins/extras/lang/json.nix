@@ -4,6 +4,7 @@
 { lib, config, ... }:
 {
   config = lib.mkIf (lib.elem "lang.json" config.lazyvim.extras) {
+
     # treesitter parsers
     lazyvim.extraTreesitterParsers = [
       "json5"
@@ -15,10 +16,10 @@
           jsonls.enable = true;
           jsonls.settings = {
             json = {
-              validate = {
+              format = {
                 enable = true;
               };
-              format = {
+              validate = {
                 enable = true;
               };
             };

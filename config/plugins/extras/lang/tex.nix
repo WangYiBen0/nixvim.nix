@@ -4,6 +4,7 @@
 { lib, config, ... }:
 {
   config = lib.mkIf (lib.elem "lang.tex" config.lazyvim.extras) {
+    plugins.vimtex.enable = true;
 
     plugins = {
       lsp = {

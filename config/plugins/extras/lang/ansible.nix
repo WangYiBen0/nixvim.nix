@@ -12,5 +12,16 @@
         };
       };
     };
+
+    keymaps = [
+      {
+        mode = [ "n" ];
+        key = "<leader>ta";
+        action.__raw = "        function()
+          require(\"ansible\").run()
+        end";
+        options.desc = "Ansible Run Playbook/Role";
+      }
+    ];
   };
 }

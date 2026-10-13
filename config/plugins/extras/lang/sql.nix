@@ -4,9 +4,20 @@
 { lib, config, ... }:
 {
   config = lib.mkIf (lib.elem "lang.sql" config.lazyvim.extras) {
+    plugins.vim-dadbod.enable = true;
+
     # treesitter parsers
     lazyvim.extraTreesitterParsers = [
       "sql"
+    ];
+
+    keymaps = [
+      {
+        mode = [ "n" ];
+        key = "<leader>D";
+        action = "<cmd>DBUIToggle<CR>";
+        options.desc = "Toggle DBUI";
+      }
     ];
   };
 }

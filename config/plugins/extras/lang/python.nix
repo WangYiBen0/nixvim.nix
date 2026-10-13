@@ -4,6 +4,8 @@
 { lib, config, ... }:
 {
   config = lib.mkIf (lib.elem "lang.python" config.lazyvim.extras) {
+    plugins.neotest.enable = true;
+
     # treesitter parsers
     lazyvim.extraTreesitterParsers = [
       "ninja"
@@ -13,10 +15,19 @@
     plugins = {
       lsp = {
         servers = {
-          ruff_lsp.enable = true;
           ruff.enable = true;
+          ruff_lsp.enable = true;
         };
       };
     };
+
+    keymaps = [
+      {
+        mode = [ "n" ];
+        key = "<leader>cv";
+        action = "<cmd>:VenvSelect<cr>";
+        options.desc = "Select VirtualEnv";
+      }
+    ];
   };
 }

@@ -12,9 +12,9 @@
           tailwindcss.settings = {
             tailwindCSS = {
               includeLanguages = {
+                heex = "html-eex";
                 elixir = "html-eex";
                 eelixir = "html-eex";
-                heex = "html-eex";
               };
             };
           };

@@ -4,6 +4,8 @@
 { lib, config, ... }:
 {
   config = lib.mkIf (lib.elem "lang.clojure" config.lazyvim.extras) {
+    plugins.baleia.enable = true;
+
     # treesitter parsers
     lazyvim.extraTreesitterParsers = [
       "clojure"

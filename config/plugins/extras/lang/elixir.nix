@@ -4,6 +4,7 @@
 { lib, config, ... }:
 {
   config = lib.mkIf (lib.elem "lang.elixir" config.lazyvim.extras) {
+    plugins.neotest.enable = true;
 
     plugins = {
       lsp = {

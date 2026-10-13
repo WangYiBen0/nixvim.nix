@@ -21,10 +21,7 @@
     # have a static port.
     extras = lib.mkOption {
       type = with lib.types; listOf str;
-      default = [
-        "lang.docker"
-        "lang.erlang"
-      ];
+      default = [ ];
       description = ''
         LazyVim extras to enable. Names match upstream's `:LazyExtras` list
         (dotted, e.g. `"lang.go"`). Only extras marked `true` in

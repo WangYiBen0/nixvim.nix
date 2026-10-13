@@ -4,6 +4,8 @@
 { lib, config, ... }:
 {
   config = lib.mkIf (lib.elem "lang.typst" config.lazyvim.extras) {
+    plugins.typst-preview.enable = true;
+
     # treesitter parsers
     lazyvim.extraTreesitterParsers = [
       "typst"
@@ -19,5 +21,14 @@
         };
       };
     };
+
+    keymaps = [
+      {
+        mode = [ "n" ];
+        key = "<leader>cp";
+        action = "<cmd>TypstPreviewToggle<cr>";
+        options.desc = "Toggle Typst Preview";
+      }
+    ];
   };
 }

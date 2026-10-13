@@ -4,6 +4,8 @@
 { lib, config, ... }:
 {
   config = lib.mkIf (lib.elem "lang.rust" config.lazyvim.extras) {
+    plugins.crates.enable = true;
+
     # treesitter parsers
     lazyvim.extraTreesitterParsers = [
       "ron"
@@ -13,8 +15,8 @@
     plugins = {
       lsp = {
         servers = {
-          rust_analyzer.enable = true;
           bacon_ls.enable = true;
+          rust_analyzer.enable = true;
         };
       };
     };
