@@ -13,6 +13,9 @@
     ast-grep
     black
     ghostscript
+    # snacks.image: converts non-PNG images for display
+    imagemagick
+    lazygit
     luaPackages.jsregexp
     mermaid-cli
     nixfmt
@@ -21,6 +24,8 @@
     stylua
     shellcheck
     shfmt
+    # systemd_ls LSP server (reported missing by :checkhealth)
+    systemd-lsp
   ];
 
   clipboard.providers = pkgs.lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
