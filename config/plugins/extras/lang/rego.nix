@@ -1,9 +1,9 @@
 # LazyVim extra: lang.rego
 # Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/rego.lua
-# Only active when listed in `extras`.
+# Only active when enabled via `extras`.
 { lib, config, ... }:
 {
-  config = lib.mkIf (lib.elem "lang.rego" config.extras) {
+  config = lib.mkIf ((config.extras.lang or { }).rego or false) {
 
     # treesitter parsers
     extraTreesitterParsers = [

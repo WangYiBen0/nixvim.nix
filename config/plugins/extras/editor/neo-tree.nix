@@ -1,9 +1,9 @@
 # LazyVim extra: editor.neo-tree
 # Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/editor/neo-tree.lua
-# Only active when listed in `extras`.
+# Only active when enabled via `extras`.
 { lib, config, ... }:
 {
-  config = lib.mkIf (lib.elem "editor.neo-tree" config.extras) {
+  config = lib.mkIf ((config.extras.editor or { }).neo-tree or false) {
 
     keymaps = [
       {

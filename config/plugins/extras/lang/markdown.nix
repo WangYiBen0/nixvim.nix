@@ -1,9 +1,9 @@
 # LazyVim extra: lang.markdown
 # Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/markdown.lua
-# Only active when listed in `extras`.
+# Only active when enabled via `extras`.
 { lib, config, ... }:
 {
-  config = lib.mkIf (lib.elem "lang.markdown" config.extras) {
+  config = lib.mkIf ((config.extras.lang or { }).markdown or false) {
     plugins.markdown-preview.enable = true;
 
     plugins = {

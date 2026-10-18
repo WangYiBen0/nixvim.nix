@@ -1,9 +1,9 @@
 # LazyVim extra: dap.core
 # Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/dap/core.lua
-# Only active when listed in `extras`.
+# Only active when enabled via `extras`.
 { lib, config, ... }:
 {
-  config = lib.mkIf (lib.elem "dap.core" config.extras) {
+  config = lib.mkIf ((config.extras.dap or { }).core or false) {
 
     keymaps = [
       {

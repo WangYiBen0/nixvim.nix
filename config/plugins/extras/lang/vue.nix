@@ -1,9 +1,9 @@
 # LazyVim extra: lang.vue
 # Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/vue.lua
-# Only active when listed in `extras`.
+# Only active when enabled via `extras`.
 { lib, config, ... }:
 {
-  config = lib.mkIf (lib.elem "lang.vue" config.extras) {
+  config = lib.mkIf ((config.extras.lang or { }).vue or false) {
 
     # treesitter parsers
     extraTreesitterParsers = [

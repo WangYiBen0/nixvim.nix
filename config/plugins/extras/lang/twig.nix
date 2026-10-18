@@ -1,9 +1,9 @@
 # LazyVim extra: lang.twig
 # Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/twig.lua
-# Only active when listed in `extras`.
+# Only active when enabled via `extras`.
 { lib, config, ... }:
 {
-  config = lib.mkIf (lib.elem "lang.twig" config.extras) {
+  config = lib.mkIf ((config.extras.lang or { }).twig or false) {
 
     # treesitter parsers
     extraTreesitterParsers = [

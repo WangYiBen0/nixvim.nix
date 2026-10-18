@@ -1,9 +1,9 @@
 # LazyVim extra: lang.yaml
 # Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/yaml.lua
-# Only active when listed in `extras`.
+# Only active when enabled via `extras`.
 { lib, config, ... }:
 {
-  config = lib.mkIf (lib.elem "lang.yaml" config.extras) {
+  config = lib.mkIf ((config.extras.lang or { }).yaml or false) {
 
     plugins = {
       lsp = {

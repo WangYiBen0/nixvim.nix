@@ -1,9 +1,9 @@
 # LazyVim extra: lang.terraform
 # Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/terraform.lua
-# Only active when listed in `extras`.
+# Only active when enabled via `extras`.
 { lib, config, ... }:
 {
-  config = lib.mkIf (lib.elem "lang.terraform" config.extras) {
+  config = lib.mkIf ((config.extras.lang or { }).terraform or false) {
 
     # treesitter parsers
     extraTreesitterParsers = [

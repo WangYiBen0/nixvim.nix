@@ -1,4 +1,15 @@
-{ lib, ... }:
+{ lib, config, ... }:
+let
+  registry = import ./plugins/extras/registry.nix;
+
+  # Flatten the nested attrset into "dotted.name" -> bool.
+  flatExtras = lib.concatMapAttrs (
+    k: v: if lib.isBool v then { "${k}" = v; } else lib.mapAttrs' (k2: lib.nameValuePair "${k}.${k2}") v
+  ) config.extras;
+
+  enabled = lib.attrNames (lib.filterAttrs (_: v: v) flatExtras);
+  unported = lib.filter (n: !(registry.${n} or false)) enabled;
+in
 {
   options = {
     # Editor profile switch.
@@ -12,25 +23,19 @@
     #     mini.snippets, mini.animate, mini.indentscope, mini.comment.
     miniProfile = lib.mkEnableOption "the mini profile (mini.* modules replace the defaults)";
 
-    # Optional feature modules, using dotted names (e.g. [ "lang.go" ]).
-    # See config/plugins/extras/registry.nix for the full catalog and which
-    # ones have a static port.
+    # Optional feature modules. Disabled by default: the base configuration
+    # already provides its own feature set, so enabling one here is purely
+    # additive. Names follow the catalog in
+    # config/plugins/extras/registry.nix (dotted, e.g. `lang.go`); only names
+    # marked `true` there have a static port, anything else warns and does
+    # nothing.
     extras = lib.mkOption {
-      type = with lib.types; listOf str;
-      default = [
-        "lang.clangd"
-        "util.dot"
-      ];
-      description = ''
-        Feature modules to enable, by dotted name. Only names marked `true` in
-        `config/plugins/extras/registry.nix` have a static port; enabling an
-        unported one produces a warning. The default lists the modules whose
-        functionality the base configuration already provides.
-      '';
-      example = [
-        "lang.go"
-        "lang.docker"
-      ];
+      type = with lib.types; attrsOf (either bool (attrsOf bool));
+      default = { };
+      description = "Optional feature modules to enable, keyed by name.";
+      example = {
+        lang.go = true;
+      };
     };
 
     # Treesitter parsers contributed by enabled extras. `types.listOf` merges by
@@ -42,5 +47,12 @@
       internal = true;
       description = "Treesitter parsers contributed by enabled feature modules.";
     };
+  };
+
+  config = {
+    warnings = map (
+      n:
+      "feature module '${n}' is enabled but has no static port, so it does nothing (see config/plugins/extras/registry.nix)"
+    ) unported;
   };
 }

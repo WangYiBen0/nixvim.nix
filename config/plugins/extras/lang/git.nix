@@ -1,9 +1,9 @@
 # LazyVim extra: lang.git
 # Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/git.lua
-# Only active when listed in `extras`.
+# Only active when enabled via `extras`.
 { lib, config, ... }:
 {
-  config = lib.mkIf (lib.elem "lang.git" config.extras) {
+  config = lib.mkIf ((config.extras.lang or { }).git or false) {
 
     # treesitter parsers
     extraTreesitterParsers = [

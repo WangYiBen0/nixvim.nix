@@ -1,9 +1,9 @@
 # LazyVim extra: lang.thrift
 # Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/thrift.lua
-# Only active when listed in `extras`.
+# Only active when enabled via `extras`.
 { lib, config, ... }:
 {
-  config = lib.mkIf (lib.elem "lang.thrift" config.extras) {
+  config = lib.mkIf ((config.extras.lang or { }).thrift or false) {
 
     # treesitter parsers
     extraTreesitterParsers = [

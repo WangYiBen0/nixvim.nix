@@ -1,9 +1,9 @@
 # LazyVim extra: lang.ruby
 # Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/ruby.lua
-# Only active when listed in `extras`.
+# Only active when enabled via `extras`.
 { lib, config, ... }:
 {
-  config = lib.mkIf (lib.elem "lang.ruby" config.extras) {
+  config = lib.mkIf ((config.extras.lang or { }).ruby or false) {
     plugins.neotest.enable = true;
 
     # treesitter parsers

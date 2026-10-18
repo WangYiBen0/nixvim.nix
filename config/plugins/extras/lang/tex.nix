@@ -1,9 +1,9 @@
 # LazyVim extra: lang.tex
 # Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/tex.lua
-# Only active when listed in `extras`.
+# Only active when enabled via `extras`.
 { lib, config, ... }:
 {
-  config = lib.mkIf (lib.elem "lang.tex" config.extras) {
+  config = lib.mkIf ((config.extras.lang or { }).tex or false) {
     plugins.vimtex.enable = true;
 
     plugins = {

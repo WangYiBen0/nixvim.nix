@@ -1,9 +1,9 @@
 # LazyVim extra: coding.luasnip
 # Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/coding/luasnip.lua
-# Only active when listed in `extras`.
+# Only active when enabled via `extras`.
 { lib, config, ... }:
 {
-  config = lib.mkIf (lib.elem "coding.luasnip" config.extras) {
+  config = lib.mkIf ((config.extras.coding or { }).luasnip or false) {
     plugins.nvim-snippets.enable = true;
 
     keymaps = [

@@ -1,9 +1,9 @@
 # LazyVim extra: ai.copilot-chat
 # Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/ai/copilot-chat.lua
-# Only active when listed in `extras`.
+# Only active when enabled via `extras`.
 { lib, config, ... }:
 {
-  config = lib.mkIf (lib.elem "ai.copilot-chat" config.extras) {
+  config = lib.mkIf ((config.extras.ai or { }).copilot-chat or false) {
     plugins.edgy.enable = true;
 
     keymaps = [

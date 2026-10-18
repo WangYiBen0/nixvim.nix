@@ -1,9 +1,9 @@
 # LazyVim extra: editor.refactoring
 # Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/editor/refactoring.lua
-# Only active when listed in `extras`.
+# Only active when enabled via `extras`.
 { lib, config, ... }:
 {
-  config = lib.mkIf (lib.elem "editor.refactoring" config.extras) {
+  config = lib.mkIf ((config.extras.editor or { }).refactoring or false) {
     plugins.refactoring.enable = true;
 
     keymaps = [

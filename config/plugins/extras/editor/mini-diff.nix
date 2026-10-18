@@ -1,9 +1,9 @@
 # LazyVim extra: editor.mini-diff
 # Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/editor/mini-diff.lua
-# Only active when listed in `extras`.
+# Only active when enabled via `extras`.
 { lib, config, ... }:
 {
-  config = lib.mkIf (lib.elem "editor.mini-diff" config.extras) {
+  config = lib.mkIf ((config.extras.editor or { }).mini-diff or false) {
 
     keymaps = [
       {

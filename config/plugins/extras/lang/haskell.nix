@@ -1,9 +1,9 @@
 # LazyVim extra: lang.haskell
 # Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/haskell.lua
-# Only active when listed in `extras`.
+# Only active when enabled via `extras`.
 { lib, config, ... }:
 {
-  config = lib.mkIf (lib.elem "lang.haskell" config.extras) {
+  config = lib.mkIf ((config.extras.lang or { }).haskell or false) {
     plugins.haskell-tools.enable = true;
 
     # treesitter parsers

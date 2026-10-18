@@ -1,9 +1,9 @@
 # LazyVim extra: lang.julia
 # Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/julia.lua
-# Only active when listed in `extras`.
+# Only active when enabled via `extras`.
 { lib, config, ... }:
 {
-  config = lib.mkIf (lib.elem "lang.julia" config.extras) {
+  config = lib.mkIf ((config.extras.lang or { }).julia or false) {
 
     # treesitter parsers
     extraTreesitterParsers = [

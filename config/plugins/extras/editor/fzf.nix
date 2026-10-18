@@ -1,9 +1,9 @@
 # LazyVim extra: editor.fzf
 # Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/editor/fzf.lua
-# Only active when listed in `extras`.
+# Only active when enabled via `extras`.
 { lib, config, ... }:
 {
-  config = lib.mkIf (lib.elem "editor.fzf" config.extras) {
+  config = lib.mkIf ((config.extras.editor or { }).fzf or false) {
     plugins.fzf-lua.enable = true;
 
     keymaps = [

@@ -1,9 +1,9 @@
 # LazyVim extra: util.octo
 # Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/util/octo.lua
-# Only active when listed in `extras`.
+# Only active when enabled via `extras`.
 { lib, config, ... }:
 {
-  config = lib.mkIf (lib.elem "util.octo" config.extras) {
+  config = lib.mkIf ((config.extras.util or { }).octo or false) {
     plugins.octo.enable = true;
 
     keymaps = [

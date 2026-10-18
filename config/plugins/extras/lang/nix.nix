@@ -1,9 +1,9 @@
 # LazyVim extra: lang.nix
 # Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/nix.lua
-# Only active when listed in `extras`.
+# Only active when enabled via `extras`.
 { lib, config, ... }:
 {
-  config = lib.mkIf (lib.elem "lang.nix" config.extras) {
+  config = lib.mkIf ((config.extras.lang or { }).nix or false) {
 
     # treesitter parsers
     extraTreesitterParsers = [

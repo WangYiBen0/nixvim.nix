@@ -1,9 +1,9 @@
 # LazyVim extra: lang.scala
 # Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/scala.lua
-# Only active when listed in `extras`.
+# Only active when enabled via `extras`.
 { lib, config, ... }:
 {
-  config = lib.mkIf (lib.elem "lang.scala" config.extras) {
+  config = lib.mkIf ((config.extras.lang or { }).scala or false) {
 
     # treesitter parsers
     extraTreesitterParsers = [
