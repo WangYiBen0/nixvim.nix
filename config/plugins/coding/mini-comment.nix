@@ -1,7 +1,7 @@
-{ config, ... }:
+{ lib, config, ... }:
 {
   plugins.mini-comment = {
-    enable = config.lazyvim.miniProfile;
+    enable = lib.mkDefault config.miniProfile;
     lazyLoad.settings.event = [ "DeferredUIEnter" ];
     settings = {
       options = {

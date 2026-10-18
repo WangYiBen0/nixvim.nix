@@ -1,9 +1,9 @@
 # LazyVim extra: test.core
 # Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/test/core.lua
-# Only active when listed in `lazyvim.extras`.
+# Only active when listed in `extras`.
 { lib, config, ... }:
 {
-  config = lib.mkIf (lib.elem "test.core" config.lazyvim.extras) {
+  config = lib.mkIf (lib.elem "test.core" config.extras) {
     plugins.neotest.enable = true;
 
     keymaps = [

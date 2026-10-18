@@ -1,12 +1,12 @@
 # LazyVim extra: lang.helm
 # Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/helm.lua
-# Only active when listed in `lazyvim.extras`.
+# Only active when listed in `extras`.
 { lib, config, ... }:
 {
-  config = lib.mkIf (lib.elem "lang.helm" config.lazyvim.extras) {
+  config = lib.mkIf (lib.elem "lang.helm" config.extras) {
 
     # treesitter parsers
-    lazyvim.extraTreesitterParsers = [
+    extraTreesitterParsers = [
       "helm"
     ];
 

@@ -1,9 +1,9 @@
 # LazyVim extra: editor.overseer
 # Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/editor/overseer.lua
-# Only active when listed in `lazyvim.extras`.
+# Only active when listed in `extras`.
 { lib, config, ... }:
 {
-  config = lib.mkIf (lib.elem "editor.overseer" config.lazyvim.extras) {
+  config = lib.mkIf (lib.elem "editor.overseer" config.extras) {
     plugins.overseer.enable = true;
 
     keymaps = [

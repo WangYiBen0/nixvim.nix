@@ -1,5 +1,5 @@
 # Auto-generated: imports every ported LazyVim extra. Each one self-gates on
-# being listed in `lazyvim.extras`, so disabled extras cost nothing.
+# being listed in `extras`, so disabled extras cost nothing.
 # The catalog (including not-yet-ported names) is in ./registry.nix.
 _: {
   imports = [

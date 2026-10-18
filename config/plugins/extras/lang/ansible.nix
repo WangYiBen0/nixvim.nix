@@ -1,9 +1,9 @@
 # LazyVim extra: lang.ansible
 # Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/ansible.lua
-# Only active when listed in `lazyvim.extras`.
+# Only active when listed in `extras`.
 { lib, config, ... }:
 {
-  config = lib.mkIf (lib.elem "lang.ansible" config.lazyvim.extras) {
+  config = lib.mkIf (lib.elem "lang.ansible" config.extras) {
 
     plugins = {
       lsp = {

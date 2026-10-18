@@ -1,13 +1,13 @@
 # LazyVim extra: lang.cmake
 # Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/cmake.lua
-# Only active when listed in `lazyvim.extras`.
+# Only active when listed in `extras`.
 { lib, config, ... }:
 {
-  config = lib.mkIf (lib.elem "lang.cmake" config.lazyvim.extras) {
+  config = lib.mkIf (lib.elem "lang.cmake" config.extras) {
     plugins.cmake-tools.enable = true;
 
     # treesitter parsers
-    lazyvim.extraTreesitterParsers = [
+    extraTreesitterParsers = [
       "cmake"
     ];
 

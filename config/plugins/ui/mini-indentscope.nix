@@ -1,7 +1,7 @@
 { lib, config, ... }:
 {
   plugins.mini-indentscope = {
-    enable = config.lazyvim.miniProfile;
+    enable = lib.mkDefault config.miniProfile;
     # Upstream uses `LazyFile`, a lazy.nvim pseudo-event. Its real equivalent is
     # exactly these three file events — deliberately NOT DeferredUIEnter, so the
     # indent scope does not load on the mini.starter start screen and draw there.
@@ -56,7 +56,5 @@
   ];
 
   # mkForce because snacks.nix enables the indent scope unconditionally.
-  plugins.snacks.settings.indent.scope.enabled = lib.mkIf config.lazyvim.miniProfile (
-    lib.mkForce false
-  );
+  plugins.snacks.settings.indent.scope.enabled = lib.mkIf config.miniProfile (lib.mkForce false);
 }

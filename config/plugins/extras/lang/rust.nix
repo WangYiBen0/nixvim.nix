@@ -1,13 +1,13 @@
 # LazyVim extra: lang.rust
 # Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/lang/rust.lua
-# Only active when listed in `lazyvim.extras`.
+# Only active when listed in `extras`.
 { lib, config, ... }:
 {
-  config = lib.mkIf (lib.elem "lang.rust" config.lazyvim.extras) {
+  config = lib.mkIf (lib.elem "lang.rust" config.extras) {
     plugins.crates.enable = true;
 
     # treesitter parsers
-    lazyvim.extraTreesitterParsers = [
+    extraTreesitterParsers = [
       "ron"
       "rust"
     ];

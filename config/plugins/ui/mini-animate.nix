@@ -2,10 +2,10 @@
 {
   # Disable the snacks scroll animation when mini.animate is enabled.
   # mkForce because snacks.nix enables it unconditionally.
-  plugins.snacks.settings.scroll.enabled = lib.mkIf config.lazyvim.miniProfile (lib.mkForce false);
+  plugins.snacks.settings.scroll.enabled = lib.mkIf config.miniProfile (lib.mkForce false);
 
   plugins.mini-animate = {
-    enable = config.lazyvim.miniProfile;
+    enable = lib.mkDefault config.miniProfile;
     # Upstream uses `cond = vim.g.neovide == nil` plus `event = "VeryLazy"`.
     # lz.n does not implement `VeryLazy`, and `lazyLoad.settings.cond` support
     # is not guaranteed, so only the event is ported here.

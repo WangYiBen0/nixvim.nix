@@ -4,10 +4,10 @@
   # switches blink.cmp's snippet engine to the mini_snippets preset.
   plugins = {
     # Only in the mini profile: the default profile uses LuaSnip.
-    luasnip.enable = lib.mkIf config.lazyvim.miniProfile (lib.mkForce false);
+    luasnip.enable = lib.mkIf config.miniProfile (lib.mkForce false);
 
     mini-snippets = {
-      enable = config.lazyvim.miniProfile;
+      enable = lib.mkDefault config.miniProfile;
       # Upstream: `event = "InsertEnter"` — "don't depend on other plugins to load".
       lazyLoad.settings.event = [ "InsertEnter" ];
 
@@ -32,7 +32,7 @@
     };
 
     # blink.cmp integration (`include_in_completion` branch).
-    blink-cmp.settings.snippets.preset = lib.mkIf config.lazyvim.miniProfile "mini_snippets";
+    blink-cmp.settings.snippets.preset = lib.mkIf config.miniProfile "mini_snippets";
   };
 
   # LazyVim patches the shared cmp actions when the mini.snippets extra is on:

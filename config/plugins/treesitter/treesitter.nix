@@ -36,7 +36,7 @@
         "xml"
         "yaml"
       ]
-      ++ config.lazyvim.extraTreesitterParsers;
+      ++ config.extraTreesitterParsers;
     };
 
     nixvimInjections = true;

@@ -1,9 +1,9 @@
 # LazyVim extra: ai.avante
 # Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/ai/avante.lua
-# Only active when listed in `lazyvim.extras`.
+# Only active when listed in `extras`.
 { lib, config, ... }:
 {
-  config = lib.mkIf (lib.elem "ai.avante" config.lazyvim.extras) {
+  config = lib.mkIf (lib.elem "ai.avante" config.extras) {
     plugins.avante.enable = true;
 
     keymaps = [

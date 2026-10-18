@@ -1,9 +1,9 @@
 # LazyVim extra: editor.outline
 # Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/editor/outline.lua
-# Only active when listed in `lazyvim.extras`.
+# Only active when listed in `extras`.
 { lib, config, ... }:
 {
-  config = lib.mkIf (lib.elem "editor.outline" config.lazyvim.extras) {
+  config = lib.mkIf (lib.elem "editor.outline" config.extras) {
     plugins.edgy.enable = true;
 
     keymaps = [

@@ -3,7 +3,7 @@ _: {
     ./autocmds.nix
     ./colorscheme.nix
     ./keymaps.nix
-    ./lazyvim.nix
+    ./profiles.nix
     ./lua.nix
     ./options.nix
 

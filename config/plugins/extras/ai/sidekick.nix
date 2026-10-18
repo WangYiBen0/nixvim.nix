@@ -1,9 +1,9 @@
 # LazyVim extra: ai.sidekick
 # Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/ai/sidekick.lua
-# Only active when listed in `lazyvim.extras`.
+# Only active when listed in `extras`.
 { lib, config, ... }:
 {
-  config = lib.mkIf (lib.elem "ai.sidekick" config.lazyvim.extras) {
+  config = lib.mkIf (lib.elem "ai.sidekick" config.extras) {
     plugins.sidekick.enable = true;
 
     keymaps = [

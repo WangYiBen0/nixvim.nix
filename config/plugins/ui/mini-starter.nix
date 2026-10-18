@@ -5,12 +5,12 @@ let
 in
 {
   # LazyVim's ui.mini-starter extra disables the Snacks dashboard and replaces
-  # it with mini.starter. Gated on `lazyvim.miniProfile` so the default profile
+  # it with mini.starter. Gated on `miniProfile` so the default profile
   # keeps the customised Snacks dashboard.
-  plugins.snacks.settings.dashboard.enabled = lib.mkIf config.lazyvim.miniProfile (lib.mkForce false);
+  plugins.snacks.settings.dashboard.enabled = lib.mkIf config.miniProfile (lib.mkForce false);
 
   plugins.mini-starter = {
-    enable = config.lazyvim.miniProfile;
+    enable = lib.mkDefault config.miniProfile;
     lazyLoad.settings.event = [ "VimEnter" ];
 
     settings = {

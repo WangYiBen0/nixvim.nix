@@ -1,9 +1,9 @@
 # LazyVim extra: util.gh
 # Best-effort port of .lazyvim-ref/lua/lazyvim/plugins/extras/util/gh.lua
-# Only active when listed in `lazyvim.extras`.
+# Only active when listed in `extras`.
 { lib, config, ... }:
 {
-  config = lib.mkIf (lib.elem "util.gh" config.lazyvim.extras) {
+  config = lib.mkIf (lib.elem "util.gh" config.extras) {
 
     keymaps = [
       {
