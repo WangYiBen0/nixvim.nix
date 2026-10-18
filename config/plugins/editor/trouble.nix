@@ -5,7 +5,7 @@
       modes = {
         lsp = {
           win = {
-            postion = "right";
+            position = "right";
           };
         };
       };

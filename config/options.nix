@@ -13,6 +13,9 @@
     ast-grep
     black
     ghostscript
+    # snacks.image: converts non-PNG images for display
+    imagemagick
+    lazygit
     luaPackages.jsregexp
     mermaid-cli
     nixfmt
@@ -21,6 +24,8 @@
     stylua
     shellcheck
     shfmt
+    # systemd_ls LSP server (reported missing by :checkhealth)
+    systemd-lsp
   ];
 
   clipboard.providers = pkgs.lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
@@ -49,6 +54,7 @@
     foldlevel = 99;
     foldmethod = "indent";
     foldtext = "";
+    formatexpr = "v:lua.LazyVim.format.formatexpr()";
     formatoptions = "jcroqlnt";
     grepformat = "%f:%l:%c:%m";
     grepprg = "rg --vimgrep";
@@ -88,6 +94,10 @@
     splitbelow = true;
     splitkeep = "screen";
     splitright = true;
+    statuscolumn = {
+      __raw = ''"%%!v:lua.LazyVim.statuscolumn()"'';
+    };
+
     tabstop = 2;
     termguicolors = true;
     timeoutlen = 300;

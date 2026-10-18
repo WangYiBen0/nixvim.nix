@@ -1,10 +1,19 @@
 {
   plugins.conform-nvim = {
     enable = true;
+    # Package the formatters referenced by `formatters_by_ft` from nixpkgs.
+    autoInstall.enable = true;
     settings = {
-      format_on_save = {
-        lsp_fallback = true;
-        timeout_ms = 500;
+      # NOTE: LazyVim deliberately does NOT set `format_on_save` for conform.
+      # Saving is driven by `LazyVim.format` via its own `BufWritePre` autocmd
+      # (see `lua/lazyvim/util/format.lua`), which is what makes `vim.g.autoformat`
+      # and the `<leader>uf` / `<leader>uF` toggles work. Setting it here as well
+      # would format twice on every write.
+      default_format_opts = {
+        timeout_ms = 3000;
+        async = false;
+        quiet = false;
+        lsp_format = "fallback";
       };
 
       formatters_by_ft = {

@@ -2,6 +2,7 @@ _: {
   imports = [
     ./coding
     ./editor
+    ./extras
     ./formatting
     ./linting
     ./lsp

@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   plugins.snacks = {
     enable = true;
@@ -5,6 +6,15 @@
       # animinate.enabled = false;
       bigfile.enabled = true;
       # bufdelete.enabled = false;
+
+      # snacks.picker stores frecency/history in SQLite through the FFI and
+      # loads the shared library by the bare name "sqlite3", which NixOS's
+      # dynamic loader cannot resolve. Point it at the nixpkgs library
+      # explicitly; the store path is interpolated at build time.
+      picker = {
+        enabled = true;
+        db.sqlite3_path = "${pkgs.sqlite.out}/lib/libsqlite3.so";
+      };
 
       dashboard = {
         enabled = true;
@@ -96,7 +106,7 @@
       };
 
       # notify.enabled = false;
-      picker.enabled = true;
+      # picker is configured above (enabled + sqlite3_path).
       # profiler.enabled = false;
       quickfile.enabled = true;
       scope.enabled = true;
