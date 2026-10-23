@@ -7,7 +7,6 @@ on:
 
 permissions:
   contents: write
-  id-token: write
   pull-requests: write
 
 jobs:
@@ -19,15 +18,12 @@ jobs:
         uses: actions/checkout@v7
 
       - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@v22
+        uses: DeterminateSystems/nix-installer-action@v23
         with:
+          # upstream Nix, not Determinate Nix (no OIDC/vendor login)
+          determinate: "false"
           extra-conf: |
             experimental-features = nix-command flakes
-
-      - name: Enable Magic Nix Cache
-        uses: DeterminateSystems/magic-nix-cache-action@v14
-        with:
-          use-flakehub: "false"
 
       - name: Set up Cachix
         uses: cachix/cachix-action@v17
@@ -38,7 +34,7 @@ jobs:
 
       - name: Update flake.lock
         id: update
-        uses: DeterminateSystems/update-flake-lock@v28
+        uses: DeterminateSystems/update-flake-lock@v29
         with:
           pr-title: "chore(deps): update flake.lock"
           pr-labels: |

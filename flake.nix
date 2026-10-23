@@ -68,11 +68,6 @@
             imports = [ self.nixvimModules.default ];
           };
         };
-
-        flakehub = {
-          version = "0.1.0";
-          description = "a nixvim configuration";
-        };
       };
 
       perSystem =
