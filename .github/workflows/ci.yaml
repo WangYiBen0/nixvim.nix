@@ -50,19 +50,39 @@ jobs:
           nix path-info -r $(cat "$RUNNER_TEMP/outs.txt") | sort -u > "$RUNNER_TEMP/closure.txt"
           echo "==> Closure paths: $(wc -l < "$RUNNER_TEMP/closure.txt")"
 
+          # Upload only what no substitute already serves. Probing is plain HTTP
+          # on purpose: one `nix path-info` per path costs ~1 s of startup plus a
+          # cold narinfo round trip in CI, which turned 997 paths into 30 min.
           substituters="https://cache.nixos.org https://nix-community.cachix.org https://niri.cachix.org https://nixpkgs-python.cachix.org"
-          check() {
-            local p=$1
-            for s in $substituters; do
-              if nix path-info --store "$s" "$p" > /dev/null 2>&1; then
-                return 0
-              fi
+          export substituters
+          served() {
+            local h=${1##*/} base code attempt
+            h=${h%%-*}
+            for base in $substituters; do
+              for attempt in 1 2 3; do
+                code=$(curl -s -m 10 -o /dev/null -w '%{http_code}' "$base/$h.narinfo")
+                [ "$code" = 000 ] || break
+                sleep 1
+              done
+              case "$code" in
+                200) return 0 ;;
+                404) continue ;;
+                *)
+                  # Inconclusive (rate limit, outage): assume it is cached, so a
+                  # flaky substituter never turns into a pointless upload.
+                  echo "::notice title=probe inconclusive::$base answered $code for $1" >&2
+                  return 0
+                  ;;
+              esac
             done
             return 1
           }
-          export -f check
-          export substituters
-          xargs -P 16 -I{} bash -c 'check "$@"' _ < "$RUNNER_TEMP/closure.txt" > "$RUNNER_TEMP/missing.txt" || true
+          export -f served
+          if ! timeout 300 xargs -P 16 -I{} bash -c 'served "$1" || echo "$1"' _ {} \
+            < "$RUNNER_TEMP/closure.txt" > "$RUNNER_TEMP/missing.txt"; then
+            echo "::warning title=probe incomplete::falling back to pushing the whole closure"
+            cp "$RUNNER_TEMP/closure.txt" "$RUNNER_TEMP/missing.txt"
+          fi
           echo "==> Missing from every substituter: $(wc -l < "$RUNNER_TEMP/missing.txt")"
           if [ -s "$RUNNER_TEMP/missing.txt" ]; then
             cachix push w1ngd1nga5ter < "$RUNNER_TEMP/missing.txt"
