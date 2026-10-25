@@ -38,7 +38,12 @@
   # LazyVim patches the shared cmp actions when the mini.snippets extra is on:
   # `<esc>` should not stop the session, and `<Tab>` jumps mini.snippets
   # placeholders instead of native `vim.snippet` ones.
-  extraConfigLua = ''
+  #
+  # Both the action patch and the `<s-tab>` keymap touch the `MiniSnippets`
+  # global, so they must only exist in the mini profile -- in the default
+  # profile mini.snippets is disabled and `MiniSnippets` is nil, which made
+  # `<Tab>` blow up with "attempt to index global 'MiniSnippets'".
+  extraConfigLua = lib.mkIf config.miniProfile ''
     do
       local cmp_actions = require("lazyvim.util").cmp.actions
 
@@ -55,7 +60,7 @@
   '';
 
   # Counterpart to `<Tab>`: jump to the previous snippet placeholder.
-  keymaps = [
+  keymaps = lib.mkIf config.miniProfile [
     {
       mode = "i";
       key = "<s-tab>";
