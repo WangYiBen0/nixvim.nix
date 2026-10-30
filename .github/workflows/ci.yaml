@@ -20,6 +20,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v7
 
+      # Only the bot's own pull request needs this, and it is minted early so
+      # the auto-merge step at the end of this job can use it: enabling
+      # auto-merge needs a token with write access, which the App provides.
+      - name: Generate GitHub App token
+        id: app-token
+        if: >-
+          github.event_name == 'pull_request' &&
+          startsWith(github.head_ref, 'update_flake_lock_action')
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ vars.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v23
         with:
@@ -88,11 +101,32 @@ jobs:
             cachix push w1ngd1nga5ter < "$RUNNER_TEMP/missing.txt"
           fi
 
-      - name: Auto-merge automated update PRs
-        if: github.event_name == 'pull_request' && github.head_ref == 'update_flake_lock_action'
-        run: gh pr merge "${{ github.event.pull_request.number }}" --rebase --delete-branch
+      # Auto-merge, scoped to this bot's own pull request: the guard below is
+      # what keeps it off human PRs, because this step lives in the `check` job
+      # that runs for every pull request.
+      #
+      # `--auto`, not an immediate merge: this very job *is* the required `check`
+      # context, so an immediate merge would be rejected while this run is still
+      # in progress. Deferred auto-merge fires once the run reports success.
+      #
+      # The App token is load-bearing. `update-flake-lock` pushes this branch and
+      # opens the pull request; with the default GITHUB_TOKEN the push triggers
+      # no workflows, so no check run ever appears on the pull request head and
+      # auto-merge would wait forever.
+      - name: Enable auto-merge on the update pull request
+        if: >-
+          github.event_name == 'pull_request' &&
+          startsWith(github.head_ref, 'update_flake_lock_action')
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: |
+          set -euo pipefail
+          pr="${{ github.event.pull_request.number }}"
+          if [ "$(gh pr view "$pr" --json autoMergeRequest --jq '.autoMergeRequest != null')" = "true" ]; then
+            echo "auto-merge is already enabled for #$pr"
+            exit 0
+          fi
+          gh pr merge "$pr" --auto --rebase
 
   cache:
     # Serialised after check so the shared nixpkgs closure is realised once
